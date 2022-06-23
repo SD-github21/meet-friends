@@ -2,7 +2,8 @@ const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 const bcrypt = require('bcrypt');
 
-// create our User model
+// create User model
+// Initialize User model (table) by extending off Sequelize's Model class
 class User extends Model {
         // set up method to run on instance data (per user) to check password
         checkPassword(loginPw) {
@@ -54,26 +55,32 @@ User.init(
             type: DataTypes.STRING,
             allowNull: false
         },
+        // define a user's avatar image
         avatar: {
             type: DataTypes.STRING,
             allowNull: false
         },
+        // define a user's city of residence
         city: {
             type: DataTypes.STRING,
             allowNull: false
         },
+        // define a user's state of residence
         state: {
             type: DataTypes.STRING,
             allowNull: false
         },
+        // define a user's date of birth
         dob: {
             type: DataTypes.DATE,
             allowNull: false
         },
+        // define a user's gender
         gender: {
             type: DataTypes.STRING,
             allowNull: false
         },
+        // define foreign key with activity 
         activity_id: {
             type: DataTypes.INTEGER,
             references: {
