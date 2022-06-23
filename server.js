@@ -39,7 +39,7 @@ app.use(routes);
 // turn on connection to db and server
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () =>
-    console.log(`Your server is now started at http://localhost:${PORT}`)
+    console.log(`\n\n\nYour server is now started at ~~~~ ➡️  http://localhost:${PORT}🚀🔥 ⬅️ ~~~~~`)
   );
   app.engine("handlebars", hbs.engine);
   app.set("view engine", "handlebars");
