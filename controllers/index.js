@@ -1,3 +1,4 @@
+
 // Init router
 const router = require('express').Router();
 // Link to /api related routes
