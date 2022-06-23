@@ -10,3 +10,5 @@ User.belongsToMany(Activity, {
 Activity.belongsToMany(User, {
     foreignKey: 'user_id'
 });
+
+module.exports = { User, Activity };
