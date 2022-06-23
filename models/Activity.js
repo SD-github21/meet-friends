@@ -20,6 +20,14 @@ Activity.init(
         activity_name: {
             type: DataTypes.STRING,
             allowNull: false
+        },
+        user_id: {
+            type: DataTypes.INTEGER,
+            allowNull: false
+        },
+        user_activity_id: {
+            type: DataTypes.INTEGER,
+            allowNull: false
         }
     },
     {

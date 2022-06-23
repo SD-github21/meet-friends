@@ -84,7 +84,14 @@ User.init(
         activity_id: {
             type: DataTypes.INTEGER,
             references: {
-                mode: 'activity',
+                model: 'activity',
+                key: 'id'
+            }
+        },
+        user_activity_id: {
+            type: DataTypes.INTEGER,
+            references: {
+                model: 'user_activity',
                 key: 'id'
             }
         }
