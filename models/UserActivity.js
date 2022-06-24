@@ -1,14 +1,14 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class User_Activity extends Model {}
+class UserActivity extends Model {}
 
-User_Activity.init(
+UserActivity.init(
     {
         id: {
             type: DataTypes.INTEGER,
             allowNull: false,
-            prmaryKey: true,
+            primaryKey: true,
             autoIncrement: true
         },
 
@@ -21,21 +21,31 @@ User_Activity.init(
             type: DataTypes.STRING,
             allowNull: false
         },
+        // define foreign key with user
         user_id: {
             type: DataTypes.INTEGER,
-            allowNull: false
+            references: {
+                model: 'user',
+                key: 'id'
+            }
+            
         },
+       // define foreign key with activity 
         activity_id: {
             type: DataTypes.INTEGER,
-            allowNull: false
-        },
+            references: {
+                model: 'activity',
+                key: 'id'
+        }
+    },
+
     },
     {
         sequelize, 
         freezeTableName: true,
         underscored: true,
-        modelName: 'user-activity'
+        modelName: 'useractivity'
     }
 );
 
-module.exports = User_Activity;
+module.exports = UserActivity;

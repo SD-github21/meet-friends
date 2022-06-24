@@ -79,21 +79,6 @@ User.init(
         gender: {
             type: DataTypes.STRING,
             allowNull: false
-        },
-        // define foreign key with activity 
-        activity_id: {
-            type: DataTypes.INTEGER,
-            references: {
-                model: 'activity',
-                key: 'id'
-            }
-        },
-        user_activity_id: {
-            type: DataTypes.INTEGER,
-            references: {
-                model: 'user_activity',
-                key: 'id'
-            }
         }
     },
     {

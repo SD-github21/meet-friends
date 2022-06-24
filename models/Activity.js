@@ -13,7 +13,7 @@ Activity.init(
         id: {
             type: DataTypes.INTEGER,
             allowNull: false,
-            prmaryKey: true,
+            primaryKey: true,
             autoIncrement: true
         },
         // define name of activity
@@ -23,7 +23,10 @@ Activity.init(
         },
         user_id: {
             type: DataTypes.INTEGER,
-            allowNull: false
+            references: {
+                model: 'user',
+                key: 'id'
+            }
         },
     },
     {
