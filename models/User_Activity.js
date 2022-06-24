@@ -1,23 +1,23 @@
-// import important parts of sequelize library
 const { Model, DataTypes } = require('sequelize');
-// import our database connection from config.js
 const sequelize = require('../config/connection');
 
-// create Activity model
-// Initialize Activity model (table) by extending off Sequelize's Model class
-class Activity extends Model {}
+class User_Activity extends Model {}
 
-Activity.init( 
+User_Activity.init(
     {
-        // define activity id
         id: {
             type: DataTypes.INTEGER,
             allowNull: false,
             prmaryKey: true,
             autoIncrement: true
         },
-        // define name of activity
-        activity_name: {
+
+        activity_location: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+
+        activity_address: {
             type: DataTypes.STRING,
             allowNull: false
         },
@@ -25,14 +25,17 @@ Activity.init(
             type: DataTypes.INTEGER,
             allowNull: false
         },
+        activity_id: {
+            type: DataTypes.INTEGER,
+            allowNull: false
+        },
     },
     {
-        sequelize,
-        timestamps: false,
+        sequelize, 
         freezeTableName: true,
         underscored: true,
-        modelName: 'activity'
+        modelName: 'user-activity'
     }
 );
 
-module.exports = Activity;
+module.exports = User_Activity;
