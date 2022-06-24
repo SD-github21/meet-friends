@@ -11,41 +11,31 @@ UserActivity.init(
             primaryKey: true,
             autoIncrement: true
         },
-
-        activity_location: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
-
-        activity_address: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
-        // define foreign key with user
         user_id: {
             type: DataTypes.INTEGER,
             references: {
-                model: 'user',
-                key: 'id'
-            }
-            
+              model: 'user',
+              key: 'id'
+            }     
         },
-       // define foreign key with activity 
         activity_id: {
             type: DataTypes.INTEGER,
             references: {
-                model: 'activity',
-                key: 'id'
-        }
-    },
-
+              model: 'activity',
+              key: 'id'
+            }
+          }
     },
     {
-        sequelize, 
+        sequelize,
+        timestamps: false,
         freezeTableName: true,
         underscored: true,
         modelName: 'useractivity'
     }
-);
+    )
+
 
 module.exports = UserActivity;
+
+

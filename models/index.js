@@ -1,31 +1,41 @@
 const User = require('./User');
 const Activity = require('./Activity');
+const UniqueActivity = require('./UniqueActivity');
 const UserActivity = require('./UserActivity');
 
 // create associations
-User.hasMany(Activity, {
-    foreignKey: 'user_id'
-})
-
-
-// one to many
-UserActivity.belongsTo(User, {
+// many to many associations
+User.belongsToMany(Activity, {
+    through: UserActivity,
+    as: 'user_activities',
     foreignKey: 'user_id'
 });
 
-UserActivity.belongsTo(Activity, {
+Activity.belongsToMany(User, {
+    through: UserActivity,
+    as: 'user_activities',
     foreignKey: 'activity_id'
 });
 
 
-User.hasMany(UserActivity, {
+// one to many associations
+UniqueActivity.belongsTo(User, {
     foreignKey: 'user_id'
 });
 
-Activity.hasMany(UserActivity, {
+UniqueActivity.belongsTo(Activity, {
+    foreignKey: 'activity_id'
+});
+
+
+User.hasMany(UniqueActivity, {
+    foreignKey: 'user_id'
+});
+
+Activity.hasMany(UniqueActivity, {
     foreignKey: 'activity_id'
 });
 
 
 
-module.exports = { User, Activity, UserActivity };
+module.exports = { User, Activity, UniqueActivity, UserActivity };
