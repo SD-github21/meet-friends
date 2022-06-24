@@ -1,8 +1,8 @@
 :root {
-    --yellow: #ecde0a;
-    --turquoise: #0ee0c5;
-    --whitesmoke: whitesmoke;
-    --shadow: darkslategray;
+    --MFyellow: #ecde0a;
+    --MFBlue: #0ee0c5;
+    --MFwhite: whitesmoke;
+    --MFshadow: darkslategray;
   }
 
 body { 
@@ -10,8 +10,51 @@ background: rgb(236,222,10);
 background: linear-gradient(90deg, rgba(236,222,10,0.48783263305322133) 35%, rgba(14,224,197,0.6783088235294117) 82%);
 }
 
-h3 {
-    font-size: 50px;
+.navBar {
+    display:flex;
+    justify-content: end;
+}
+
+.profileView {
+    padding: 15px;
+    margin: 0 15rem 0 15rem;
+    display:flex;
+}
+
+.profileTitle, .profilePostText {
+    color: var(--MFwhite);
+    text-shadow: 10px 0px 10px var(--MFshadow);
+    margin:5px;
+    text-decoration: none;
+    font-size: 35px;
+}
+
+.profileNav {
+    color: var(--MFwhite);
+    margin: 5px;
+    text-shadow: 10px 0px 10px var(--MFshadow);
+    text-decoration: none;
+    font-size:20px;
+}
+
+.profileName {
+    font-size: 35px;
     color: whitesmoke;
-    text-shadow: 10px 0px 10px darkslategray;
+    text-shadow: 5px 0px 5px darkslategray;
+}
+
+.profileDet {
+    color: var(--MFwhite);
+    text-shadow: 5px 0px 5px var(--MFshadow);
+    font-size: 25px;
+}
+
+.postText {
+    color: var(--MFshadow);
+    font-size: 15px
+}
+
+.profilePost {
+    display: flex;
+
 }
