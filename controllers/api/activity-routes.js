@@ -24,6 +24,7 @@ router.get('/', (req, res) => {
 // get one user
 router.get('/:id', (req, res) => {
     Activity.findOne({
+        attributes: { exclude: ['password'] },
         where: {
             id: req.params.id
         },
@@ -31,7 +32,6 @@ router.get('/:id', (req, res) => {
         include: [
             {
                 model: User,
-                attributes: ['id', 'first_name', 'last_name', 'avatar', 'dob'],
                 through: UserActivity
             }
         ]

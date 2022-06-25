@@ -10,7 +10,8 @@ const userData = [
     city: "Austin",
     state: "Texas",
     dob: "02/12/15",
-    gender: "female"
+    gender: "female",
+    avatar: "girl3.jpeg"
   },
   {
     email: "test2@gmail.com",
@@ -20,7 +21,8 @@ const userData = [
     city: "Austin",
     state: "Texas",
     dob: "02/12/15",
-    gender: "female"
+    gender: "female",
+    avatar: "girl4.jpeg"
   },
   {
     email: "test3@gmail.com",
@@ -30,7 +32,8 @@ const userData = [
     city: "Austin",
     state: "Texas",
     dob: "02/12/15",
-    gender: "male"
+    gender: "male",
+    avatar: "guy1.jpeg"
   },
   {
     email: "test4@gmail.com",
@@ -40,7 +43,8 @@ const userData = [
     city: "Austin",
     state: "Texas",
     dob: "02/12/15",
-    gender: "male"
+    gender: "male",
+    avatar: "guy3.webp"
   },
 
 ];
