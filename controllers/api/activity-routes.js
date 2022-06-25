@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const { User, Activity, UserActivity } = require('../../models');
 
-// get all users
+// get all users that chose a specific activity
 router.get('/', (req, res) => {
     Activity.findAll({
         attributes: ['id', 'activity_name', 'user_id'],
