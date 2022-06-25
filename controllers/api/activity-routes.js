@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Activity, User } = require('../../models');
+const { User, Activity, UserActivity } = require('../../models');
 
 // get all users
 router.get('/', (req, res) => {
@@ -8,7 +8,9 @@ router.get('/', (req, res) => {
         include: [
             {
                 model: User,
-                attributes: ['first_name', 'last_name', 'avatar', 'dob']
+                attributes: ['id', 'first_name', 'last_name', 'avatar', 'dob'],
+                through: UserActivity,
+                as: 'user_activities'
             }
         ]
     })
@@ -29,7 +31,9 @@ router.get('/:id', (req, res) => {
         include: [
             {
                 model: User,
-                attributes: ['first_name', 'last_name', 'avatar', 'dob', 'gender']
+                attributes: ['id', 'first_name', 'last_name', 'avatar', 'dob'],
+                through: UserActivity,
+                as: 'user_activities'
             }
         ]
     })
@@ -49,9 +53,8 @@ router.get('/:id', (req, res) => {
 // create a activity
 router.post('/', (req, res) => {
     Activity.create({
-        activity_name: req.body.activity_name,
-        user_id: req.body.user_id
-    })
+        activity_name: req.body.activity_name
+        })
      .then(dbActivityData => res.json(dbActivityData))
      .catch(err => {
         console.log(err);
