@@ -30,22 +30,16 @@ router.post('/', (req,res) => {
     User.create({
       email: req.body.email,
       password: req.body.password,
-      first_name: req.body.firstName,
-      last_name: req.body.lastName,
-      avatar: null,
+      first_name: req.body.first_name,
+      last_name: req.body.last_name,
       city: req.body.city,
       state: req.body.state,
-      dob: req.body.dOB,
+      dob: req.body.dob,
       gender: req.body.gender,
+      avatar: 'profile-image'
+      
     })
-    .then(userData =
-      req.session.save(() => {
-        req.session.user_id = userData.id;
-        req.session.email =userData.email;
-        req.session.loggedIn = true;
-    
-        res.json(userData);
-      }))
+    .then(userData => res.json(userData))
       .catch(err => {
         console.log(err);
         res.status(500).json(err);

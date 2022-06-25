@@ -17,7 +17,7 @@ function onlyOne(checkbox) {
 
 async function signupFormHandler(event) {
   event.preventDefault();
-  console.log('test2');
+  
 
   const email = document.querySelector("#email-signup").value.trim();
   const password = document.querySelector("#password-signup").value.trim();
@@ -82,17 +82,17 @@ async function createProfileHandler(event){
     const email = user.email;
     const password = user.password;
 
-    console.log(dOB, gender);
+    
 
     if(firstName && lastName && city && state && dOB){
         const response = await fetch('api/users',{
             method: 'POST',
             body: JSON.stringify({
-                firstName,
-                lastName,
+                first_name:firstName,
+                last_name:lastName,
                 city,
                 state,
-                dOB,
+                dob:dOB,
                 email,
                 password,
                 gender
