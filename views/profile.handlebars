@@ -3,17 +3,19 @@
   <div class="row">
     <div class="col-lg-6">
       <div class="card" style="width: 20rem;">
-            <img class="card-img-top" src="../public/img/girl2.webp" alt="Profile Image">
+            <img class="card-img-top" src="../img/girl2.webp" alt="Profile Image">
             <div class="card-body">   
               <!--Profile info fill in proper terms-->            
-          <h3 class="card-subtitle mb-2 profileName">Zurisha</h3>
-          <p class="card-text profileDet">Location: Austin, tx</p>
-          <p class="card-text profileDet">Age: 40</p>
-          <p class="card-text profileDet">Interest: Music </p>
+          <h3 class="card-subtitle mb-2 profileName">{{first_name}}{{last_name}}</h3>
+          <p class="card-text profileDet">{{gender}}</p>
+          <p class="card-text profileDet">Location: {{city}}, {{state}}</p>
+          <p class="card-text profileDet">Age: {{dob}}</p>
+          <p class="card-text profileDet">Interest: {{interest}} </p>
+          <p class="card-text profileDet">email: {{email}}</p>
         </div>
       </div>
     </div>
-    <div class="container justify-content-start profilePost">
+    <div class="container justify-content-end profilePost">
       <div class="row">
         <div class="col-lg-4">
          <h2 class="profilePostText">Active Posts</h2>
