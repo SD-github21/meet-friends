@@ -2,7 +2,7 @@
     --MFyellow: #ecde0a;
     --MFBlue: #0ee0c5;
     --MFwhite: whitesmoke;
-    --MFshadow: darkslategray;
+    --MFshadow: black;
   }
 
 /* body { 
@@ -13,19 +13,20 @@ background: linear-gradient(90deg, rgba(236,222,10,0.48783263305322133) 35%, rgb
 
 
 .profileTitle, .profilePostText {
-    color: var(--MFshadow);
-    text-shadow: 10px 0px 10px var(--MFshadow);
-    margin:5px;
+    color: var(--MFBlue);
+    text-shadow: 1px 1px 5px var(--MFshadow);
+
     text-decoration: none;
     font-size: 35px;
+    font-weight: bolder;
 }
 
 .profileNav {
-    color: var(--MFshadow);
-    margin: 5px;
-    text-shadow: 10px 0px 10px var(--MFshadow);
+    color: var(--MFBlue);
+    text-shadow: 1px 1px 5px var(--MFshadow);
     text-decoration: none;
-    font-size:20px;
+    font-size:30px;
+    font-weight: bolder;
 }
 
 .profileName {
@@ -48,4 +49,13 @@ background: linear-gradient(90deg, rgba(236,222,10,0.48783263305322133) 35%, rgb
 .profilePost {
     display: flex;
 
+}
+
+/* -------------------------------------------------------------------------------------------- */
+#signup-form{
+    background-color: white;
+    color: black;
+    border-radius: 2%;
+    border: 2px solid yellow;
+    box-shadow: 10px 10px 10px rgb(10, 228, 10) ;
 }

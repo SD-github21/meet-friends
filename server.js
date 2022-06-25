@@ -1,5 +1,4 @@
 /** @format */
-
 // Initialize express --
 const express = require("express");
 // Initialize HandleBars
@@ -10,6 +9,9 @@ const path = require("path");
 const routes = require("./controllers");
 // Sequelize connect
 const sequelize = require("./config/connection");
+// Init multer for image handling
+
+
 // setup cookie session code
 const session = require("express-session");
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
@@ -35,6 +37,8 @@ app.use(session(sess));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
 app.use(routes);
+
+
 
 // turn on connection to db and server
 sequelize.sync({ force: false }).then(() => {

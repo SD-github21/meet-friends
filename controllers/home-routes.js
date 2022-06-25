@@ -6,6 +6,7 @@ const sequelize = require('../config/connection');
 //const { Activity, User} = require('..models/');
 //Setup check to see if user is signed in
 const authorizeUser = require('../utils/auth');
+const {storage , upload }  = require('../config/imageStorage');
 
 router.get('/',(req,res) =>{
     res.render('homepage');
@@ -14,6 +15,7 @@ router.get('/',(req,res) =>{
 router.get('/dashboard', (req,res) =>{
     res.render('dashboard');
 });
+
 
 router.get('/signup', (req,res) =>{
     res.render('signup')

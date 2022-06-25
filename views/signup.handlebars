@@ -1,0 +1,32 @@
+<section id="sign-up" class="container-fluid d-flex border border-dark justify-content-center">
+
+
+<form id ="signup-form" class ="p-5 m-5">
+  <h2>Create your account</h2>
+  <div class="form-group">
+    <label for="email" id="email-label">Email address</label>
+    <input type="email" class="form-control" id="email-signup" aria-describedby="emailHelp" placeholder="Enter email">
+    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+  </div>
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input type="password" class="form-control" id="password-signup" placeholder="Password must be at least 4 characters long">
+  </div>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+
+</section>
+
+
+
+<script src="../javascript/create-account.js"></script>
+
+
+
+
+<form method="POST" action="/api/users/signup" enctype="multipart/form-data">
+    <input type="file" name="image">
+    <input type="submit"></input>
+    </form> 
