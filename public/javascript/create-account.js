@@ -28,9 +28,19 @@ async function signupFormHandler(event) {
   const email = document.querySelector("#email-signup").value.trim();
   const password = document.querySelector("#password-signup").value.trim();
   const signUpSection = document.querySelector("#sign-up");
-  
+  const emailLabel = document.querySelector("#email-label");
 // checks if an email and password longer than 4 characters has been entered
  if (email && password.length >= 4 ) {
+    // const response = await fetch('/api/users/signup',{
+    //     method: 'GET',
+    //     body: JSON.stringify({
+    //         email
+    //     }),
+    //     headers: { 'Content-Type': 'application/json' }
+    // });
+    // if(response.ok){
+
+    // }
     // assigns user info to an object
     user = {
       email: email,

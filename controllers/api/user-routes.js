@@ -47,11 +47,26 @@ router.post('/', (req,res) => {
 
 });
 
+router.get('/signup', (req,res)=>{
+  User.findOne({
+    attributes:{exclude:['password']},
+    where: {
+      email: req.body.email
+    }
+  })
+  .then(user => {
+    res.json(user);
+    console.log(user);
+  })
+  .catch(err => {
+    console.log(err);
+    res.status(500).json(err);
+  });
+})
+router.post('/signup', upload.single('image'), (req,res) => {
+  res.redirect('/dashboard');
 
-// router.post('/signup', upload.single('image'), (req,res) => {
-//   res.redirect('/dashboard');
-
-// });
+});
 
 
 module.exports = router;

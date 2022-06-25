@@ -4,7 +4,7 @@
 <form id ="signup-form" class ="p-5 m-5">
   <h2>Create your account</h2>
   <div class="form-group">
-    <label for="email">Email address</label>
+    <label for="email" id="email-label">Email address</label>
     <input type="email" class="form-control" id="email-signup" aria-describedby="emailHelp" placeholder="Enter email">
     <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
   </div>
@@ -26,7 +26,7 @@
 
 
 
-{{!-- <form method="POST" action="/api/users/signup" enctype="multipart/form-data">
+<form method="POST" action="/api/users/signup" enctype="multipart/form-data">
     <input type="file" name="image">
     <input type="submit"></input>
-    </form> --}}
+    </form> 
