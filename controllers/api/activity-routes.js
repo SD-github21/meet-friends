@@ -4,7 +4,7 @@ const { User, Activity, UserActivity } = require('../../models');
 // get all users
 router.get('/', (req, res) => {
     Activity.findAll({
-        attributes: ['id', 'activity_name'],
+        attributes: ['id', 'activity_name', 'user_id'],
         include: [
             {
                 model: User,
