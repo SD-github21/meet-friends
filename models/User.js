@@ -79,13 +79,6 @@ User.init(
         gender: {
             type: DataTypes.STRING,
             allowNull: false
-        },
-        activity_id: {
-            type: DataTypes.INTEGER,
-            references: {
-              model: 'activity',
-              id: 'id'
-            }      
         }
     },
     {

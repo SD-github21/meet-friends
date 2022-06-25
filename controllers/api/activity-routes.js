@@ -53,7 +53,8 @@ router.get('/:id', (req, res) => {
 // create a activity
 router.post('/', (req, res) => {
     Activity.create({
-        activity_name: req.body.activity_name
+        activity_name: req.body.activity_name,
+        user_id: req.body.user_id
         })
      .then(dbActivityData => res.json(dbActivityData))
      .catch(err => {
