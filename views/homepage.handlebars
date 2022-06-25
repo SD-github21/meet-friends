@@ -1,15 +1,20 @@
 <h1 style = "font-size: 50px; color: white;  font-weight: bold;  text-shadow: 1px 1px 10px black">Welcome To Our Page!</h1>
 
-<form class="login-form">
-  <div>
-    <label for="email-login">email:</label>
-    <input type="text" id="email-login" />
+<div class="contaier">
+  <div class="row px-5">
+    <form class="login-form col-4 bg-light bg-opacity-25 rounded">
+      <div class="mb-3">
+        <label for="email-login" class="form-label">Email address</label>
+        <input type="text" class="form-control" id="password-login" aria-describedby="emailHelp">
+        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+      </div>
+      <div class="mb-3">
+        <label for="password-login" class="form-label">Password</label>
+        <input type="password" class="form-control" id="password-login">
+      </div>
+      <button type="submit" class="btn btn-info">Login</button>
+    </form>
   </div>
-  <div>
-    <label for="password-login">password:</label>
-    <input type="password" id="password-login" />
-  </div>
-  <div>
-    <button type="submit">login</button>
-  </div>
-</form>
+
+  <div class="row"></div>
+</div>
