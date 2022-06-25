@@ -1,45 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" type="image/png" href="../public/img/favicon_io (6)/favicon.png"/>
-    <link rel="stylesheet" href="../public/stylesheets/style.css"/>
 
-    <title>Meet Friends</title>
-</head>
-
-<body>
-    <header>
-        <h3>Meet Friends Profile</h3>
-    <nav>
-        <h2>Pick an Activity</h2>
-        <h2>Logout</h2>
-    </nav>
-    </header>
-
-    <section>
-        <h2>Profile</h2>
-        <img src="" alt=""/>
-        <p>Name:</p>
-        <p>Age:</p>
-        <p>Gender:</p>
-        <p>Location:</p>
-        <p>Interests:</p>
-    </section>
-    <section>
-        <h2>Active Posts</h2>
-        <ol></ol>
-    </section>
-    <section>
-        <h2>Success!!</h2>
-    </section>
-    <photo></photo>
-    
-<body>
-    
-</body>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js"></script>
-</html>
+<div class="container .mb-10rem border border-dark profileView">
+  <div class="row">
+    <div class="col-lg-6">
+      <div class="card" style="width: 20rem;">
+            <img class="card-img-top" src="../img/girl2.webp" alt="Profile Image">
+            <div class="card-body">   
+              <!--Profile info fill in proper terms-->            
+          <h3 class="card-subtitle mb-2 profileName">Zurisha</h3>
+          <p class="card-text profileDet">Location: Austin, tx</p>
+          <p class="card-text profileDet">Age: 40</p>
+          <p class="card-text profileDet">Interest: Music </p>
+        </div>
+      </div>
+    </div>
+    <div class="container justify-content-start profilePost">
+      <div class="row">
+        <div class="col-lg-4">
+         <h2 class="profilePostText">Active Posts</h2>
+         <ol class="post-list postText">
+          {{#each posts as |post|}}
+          <li>
+            {{> post-info post}}
+          </li>
+          {{/each}}
+        </ol>
+        </div>
+        <div class="col-lg-4">
+         <h2 class="profilePostText">Success!!</h2>
+         
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
