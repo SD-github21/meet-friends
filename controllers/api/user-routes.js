@@ -63,10 +63,10 @@ router.get('/signup', (req,res)=>{
     res.status(500).json(err);
   });
 })
-router.post('/signup', upload.single('image'), (req,res) => {
-  res.redirect('/dashboard');
+// router.post('/signup', upload.single('image'), (req,res) => {
+//   res.redirect('/dashboard');
 
-});
+// });
 
 
 module.exports = router;

@@ -108,8 +108,8 @@ async function createProfileHandler(event){
         const response = await fetch('api/users',{
             method: 'POST',
             body: JSON.stringify({
-                first_name:firstName,
-                last_name:lastName,
+                first_name: firstName,
+                last_name: lastName,
                 city,
                 state,
                 dob:dOB,
