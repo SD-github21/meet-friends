@@ -2,34 +2,42 @@
 
 
 
-// init user variable
+// setup variable for user data
 let user;
+// setup a variable to assign gender to
 let gender;
-// makes sure only one check box is checked 
+
+
+// grabs the checkboxes with the name "gendercheck" and verifies only one is checked
 function onlyOne(checkbox) {
+    // assigns the gender variable to the current checked gender
     gender = checkbox.placeholder;
+    // grabs all the check boxes with name = gendercheck
     var checkboxes = document.getElementsByName('gendercheck')
+    // filters the checkboxes checking for checked boxes and unchecking them.
     checkboxes.forEach((item) => {
         if (item !== checkbox) item.checked = false
     });
 };
 
-
+// Sign up form submit handler
 async function signupFormHandler(event) {
   event.preventDefault();
   
-
+  // grabs info for form and assigns to variables
   const email = document.querySelector("#email-signup").value.trim();
   const password = document.querySelector("#password-signup").value.trim();
   const signUpSection = document.querySelector("#sign-up");
   
-
+// checks if an email and password longer than 4 characters has been entered
  if (email && password.length >= 4 ) {
+    // assigns user info to an object
     user = {
       email: email,
       password: password,
     };
 
+// removes the signup form and enters a new form to create a profile
     signUpSection.innerHTML = 
     `
     <form id ="profile-create" class ="p-5 m-5">
@@ -66,14 +74,16 @@ async function signupFormHandler(event) {
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>
   `;
+  // starts the eventlistener for the new form
   document.querySelector("#profile-create").addEventListener("submit", createProfileHandler);
   };
   
 };
 
+// event handler for profile creation submit
 async function createProfileHandler(event){
     event.preventDefault();
-
+    // sets all the fields to variables
     const firstName = document.querySelector('#first_name').value.trim();
     const lastName = document.querySelector('#last_name').value.trim();
     const city = document.querySelector('#city').value.trim();
@@ -83,7 +93,7 @@ async function createProfileHandler(event){
     const password = user.password;
 
     
-
+// if all the field are no empty does a post request
     if(firstName && lastName && city && state && dOB){
         const response = await fetch('api/users',{
             method: 'POST',
@@ -105,7 +115,9 @@ async function createProfileHandler(event){
             alert(response.statusText);
         }
     };
-    
+// resets gender and user.
+    user = '';
+    gender = '';
 
 };
 
