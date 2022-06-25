@@ -1,11 +1,19 @@
 const router = require('express').Router();
-const { User, Activity, UserActivity } = require('../../models');
+const { User, Activity, UserActivity, UniqueActivity } = require('../../models');
 
 // get all users that chose a specific activity
 router.get('/', (req, res) => {
     Activity.findAll({
         attributes: ['id', 'activity_name', 'user_id'],
         include: [
+            {
+                model: UniqueActivity,
+                attributes: ['id', 'uactivity_location', 'uactivity_address', 'user_id', 'activity_id'],
+                include: {
+                    model: User,
+                    attributes: ['first_name', 'last_name']
+                }
+            },
             {
                 model: User,
                 attributes: ['id', 'first_name', 'last_name', 'avatar', 'dob'],
