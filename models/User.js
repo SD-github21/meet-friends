@@ -58,7 +58,7 @@ User.init(
         // define a user's avatar image
         avatar: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true
         },
         // define a user's city of residence
         city: {
