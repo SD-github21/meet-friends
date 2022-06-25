@@ -5,16 +5,17 @@ const UserActivity = require('./UserActivity');
 
 // create associations
 // many to many associations
-User.belongsToMany(Activity, {
-    through: UserActivity,
-    as: 'user_activities',
-    foreignKey: 'user_id'
-});
 
 Activity.belongsToMany(User, {
     through: UserActivity,
     as: 'user_activities',
     foreignKey: 'activity_id'
+});
+
+User.belongsToMany(Activity, {
+    through: UserActivity,
+    as: 'user_activities',
+    foreignKey: 'user_id'
 });
 
 
