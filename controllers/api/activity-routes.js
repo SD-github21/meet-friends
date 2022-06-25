@@ -4,10 +4,15 @@ const { User, Activity, UserActivity} = require('../../models');
 // get all users
 router.get('/', (req, res) => {
     Activity.findAll({
-       include:{
-        model: UserActivity,
-        
-       }
+        attributes: ['id', 'activity_name', 'user_id'],
+        include: [
+            {
+                model: User,
+                attributes: ['id', 'first_name', 'last_name', 'avatar', 'dob'],
+                through: UserActivity,
+                as: 'user_activities'
+            }
+        ]
     })
      .then(dbActivityData => res.json(dbActivityData))
      .catch(err => {
