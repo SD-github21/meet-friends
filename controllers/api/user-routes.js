@@ -13,7 +13,7 @@ router.get('/', (req, res) => {
 });
 
 router.post('/signup', upload.single('image'), (req,res) => {
-  res.redirect('http://localhost:3001/dashboard');
+  res.redirect('/dashboard');
 
 });
 
