@@ -1,0 +1,35 @@
+
+<div class="container .mb-10rem border border-dark profileView">
+  <div class="row">
+    <div class="col-lg-6">
+      <div class="card" style="width: 20rem;">
+            <img class="card-img-top" src="../public/img/girl2.webp" alt="Profile Image">
+            <div class="card-body">   
+              <!--Profile info fill in proper terms-->            
+          <h3 class="card-subtitle mb-2 profileName">Zurisha</h3>
+          <p class="card-text profileDet">Location: Austin, tx</p>
+          <p class="card-text profileDet">Age: 40</p>
+          <p class="card-text profileDet">Interest: Music </p>
+        </div>
+      </div>
+    </div>
+    <div class="container justify-content-start profilePost">
+      <div class="row">
+        <div class="col-lg-4">
+         <h2 class="profilePostText">Active Posts</h2>
+         <ol class="post-list postText">
+          {{#each posts as |post|}}
+          <li>
+            {{> post-info post}}
+          </li>
+          {{/each}}
+        </ol>
+        </div>
+        <div class="col-lg-4">
+         <h2 class="profilePostText">Success!!</h2>
+         
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

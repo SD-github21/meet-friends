@@ -15,14 +15,8 @@ background: linear-gradient(90deg, rgba(236,222,10,0.48783263305322133) 35%, rgb
     justify-content: end;
 }
 
-.profileView {
-    padding: 15px;
-    margin: 0 15rem 0 15rem;
-    display:flex;
-}
-
 .profileTitle, .profilePostText {
-    color: var(--MFwhite);
+    color: var(--MFshadow);
     text-shadow: 10px 0px 10px var(--MFshadow);
     margin:5px;
     text-decoration: none;
@@ -30,7 +24,7 @@ background: linear-gradient(90deg, rgba(236,222,10,0.48783263305322133) 35%, rgb
 }
 
 .profileNav {
-    color: var(--MFwhite);
+    color: var(--MFshadow);
     margin: 5px;
     text-shadow: 10px 0px 10px var(--MFshadow);
     text-decoration: none;
@@ -39,7 +33,7 @@ background: linear-gradient(90deg, rgba(236,222,10,0.48783263305322133) 35%, rgb
 
 .profileName {
     font-size: 35px;
-    color: whitesmoke;
+    color: var(--MFshadow);
     text-shadow: 5px 0px 5px darkslategray;
 }
 
