@@ -1,0 +1,17 @@
+:root {
+    --yellow: #ecde0a;
+    --turquoise: #0ee0c5;
+    --whitesmoke: whitesmoke;
+    --shadow: darkslategray;
+  }
+
+body { 
+background: rgb(236,222,10);
+background: linear-gradient(90deg, rgba(236,222,10,0.48783263305322133) 35%, rgba(14,224,197,0.6783088235294117) 82%);
+}
+
+h3 {
+    font-size: 50px;
+    color: whitesmoke;
+    text-shadow: 10px 0px 10px darkslategray;
+}
