@@ -62,3 +62,24 @@ background: linear-gradient(90deg, rgba(236,222,10,0.48783263305322133) 35%, rgb
     border: 2px solid yellow;
     box-shadow: 10px 10px 10px rgb(10, 228, 10) ;
 }
+
+.activities-btn{
+    
+    border-radius: 5%;
+    padding: 1%;
+    font-size: 40px;
+    text-align: center;
+    width: 25%;
+    margin: 1%;
+}
+
+.activities-btn:hover{
+    border: 1px solid black;
+    border-radius: 10%;
+    padding: 1%;
+    font-size: 40px;
+    text-align: center;
+    width: 25%;
+    margin: 1%;
+    transform: scale(108%);
+}

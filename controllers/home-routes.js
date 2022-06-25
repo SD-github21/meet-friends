@@ -3,7 +3,7 @@ const router = require('express').Router();
 // Setup sequelize incase literal search is needed 
 const sequelize = require('../config/connection');
 // Link to models
-//const { Activity, User} = require('..models/');
+const { Activity, User} = require('../models');
 //Setup check to see if user is signed in
 const authorizeUser = require('../utils/auth');
 const {storage , upload }  = require('../config/imageStorage');
@@ -13,7 +13,21 @@ router.get('/',(req,res) =>{
 });
 
 router.get('/dashboard', (req,res) =>{
-    res.render('dashboard');
+    Activity.findAll()
+    .then(activityData => {
+        if(!activityData){
+            res.status(404).json({message: "No activity data found"});
+            return;
+        }
+        
+        const activities = activityData.map( activities => activities.get({ plain: true }));
+        
+        res.render('dashboard', {activities});
+
+
+    })
+
+    
 });
 
 
