@@ -156,7 +156,11 @@ router.post('/signup', (req,res)=>{
 })
 
 router.post('/upload', upload.single('image'), (req,res) => {
+ // once image uploaded do another fetch (PUT - update image )
 
+ // SAVE IMAGE NAME TO VARIABLE  FETCH PUT REQUEST TO USER UPDATE USER ../img/${variableIMAGENAME} user avatar 
+
+ // REFRESH DASHBOARD WITH NEW USER DATA
 
   res.render('dashboard');
   res.redirect('/dashboard');
