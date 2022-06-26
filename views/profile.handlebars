@@ -4,15 +4,18 @@
     <div class="col-lg-6">
 
       <div class="card bg-light bg-opacity-25 rounded shadow" style="width: 20rem;">
-            <img class="card-img-top" src="../img/girl2.webp" alt="Profile Image">
+            <img class="card-img-top" src="{{user.avatar}}" alt="Profile Image">
+            <form method="POST" action="/api/users/upload" enctype="multipart/form-data">
+              <input type="file" name="image">
+              <input type="submit"></input>
+            </form> 
             <div class="card-body">   
               <!--Profile info fill in proper terms-->            
-          <h3 class="card-subtitle mb-2 profileName">{{first_name}}{{last_name}}</h3>
-          <p class="card-text profileDet">{{gender}}</p>
-          <p class="card-text profileDet">Location: {{city}}, {{state}}</p>
-          <p class="card-text profileDet">Age: {{dob}}</p>
-          <p class="card-text profileDet">Interest: {{interest}} </p>
-          <p class="card-text profileDet">email: {{email}}</p>
+          <h3 class="card-subtitle mb-2 profileName">{{user.first_name}}{{user.last_name}}</h3>
+          <p class="card-text profileDet">{{user.gender}}</p>
+          <p class="card-text profileDet">Location: {{user.city}}, {{user.state}}</p>
+          <p class="card-text profileDet">Age: {{user.dob}}</p>
+          <p class="card-text profileDet">email: {{user.email}}</p>
         </div>
       </div>
       

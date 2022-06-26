@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const { User } = require('../../models');
 const upload = require('../../config/imageStorage');
+const multer = require('multer')
 
 // GET /api/users
 router.get('/', (req, res) => {
@@ -88,7 +89,7 @@ router.post('/login', (req, res) => {
 
       req.session.save(() => {
       // declare session variables
-      req.session.user_id = dbUserData.id;
+      req.session.id = dbUserData.id;
       req.session.email = dbUserData.email;
       req.session.loggedIn = true;
 
@@ -153,10 +154,27 @@ router.post('/signup', (req,res)=>{
     res.status(500).json(err);
   });
 })
-// router.post('/signup', upload.single('image'), (req,res) => {
-//   res.redirect('/dashboard');
 
-// });
+router.post('/upload', upload.single('image'), (req,res) => {
+
+
+  res.render('dashboard');
+  res.redirect('/dashboard');
+
+//   User.findOne({
+//     where:{ 
+//         email: req.session.email
+//     }
+// }).then(userData => {
+//     const user = userData.get({plain:true});
+//     res.render('profile', {
+//         user,
+//         loggedIn: true
+//     });
+// })
+
+
+});
 
 
 module.exports = router;

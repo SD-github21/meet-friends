@@ -36,7 +36,20 @@ router.get('/signup', (req,res) =>{
 })
 
 router.get('/profile', (req,res) =>{
-    res.render('profile');
-})
+
+    User.findOne({
+        where:{ 
+            email: req.session.email
+        }
+    }).then(userData => {
+        const user = userData.get({plain:true});
+        res.render('profile', {
+            user,
+            loggedIn: true
+        });
+    })
+    
+
+});
 
 module.exports = router;
