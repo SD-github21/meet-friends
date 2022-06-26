@@ -28,6 +28,7 @@ UserActivity.init(
     },
     {
         sequelize,
+        timestamps: false,
         freezeTableName: true,
         underscored: true,
         modelName: 'useractivity'
@@ -36,5 +37,3 @@ UserActivity.init(
 
 
 module.exports = UserActivity;
-
-
