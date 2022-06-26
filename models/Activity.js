@@ -21,6 +21,7 @@ Activity.init(
             type: DataTypes.STRING,
             allowNull: false
 <<<<<<< HEAD
+<<<<<<< HEAD
         },
         user_id: {
             type: DataTypes.INTEGER,
@@ -29,6 +30,8 @@ Activity.init(
                 model: 'user',
                 key: 'id'
             }
+=======
+>>>>>>> teamBranch
 =======
 >>>>>>> teamBranch
         }

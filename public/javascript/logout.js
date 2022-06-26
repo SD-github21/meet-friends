@@ -1,6 +1,10 @@
 async function logout() {
 <<<<<<< HEAD
+<<<<<<< HEAD
     const response = await fetch('/api/users/logout', {
+=======
+    const response = await fetch('api/users/logout', {
+>>>>>>> teamBranch
 =======
     const response = await fetch('api/users/logout', {
 >>>>>>> teamBranch
