@@ -2,6 +2,8 @@
 
 
 
+
+
 // setup variable for user data
 let user;
 // setup a variable to assign gender to
@@ -31,59 +33,65 @@ async function signupFormHandler(event) {
   const emailLabel = document.querySelector("#email-label");
 // checks if an email and password longer than 4 characters has been entered
  if (email && password.length >= 4 ) {
-    // const response = await fetch('/api/users/signup',{
-    //     method: 'GET',
-    //     body: JSON.stringify({
-    //         email
-    //     }),
-    //     headers: { 'Content-Type': 'application/json' }
-    // });
-    // if(response.ok){
+    const response =  fetch('/api/users/signup',{
+        method: 'POST',
+        body: JSON.stringify({
+            email
+        }),
+        headers: { 'Content-Type': 'application/json' }
+    }).then((response) =>{
+       
+        return response.json()
+    }).then(userData => {
+        if(!userData){
+            // assigns user info to an object
+                user = {
+                        email: email,
+                        password: password,
+                        
+                       };
+                       // removes the signup form and enters a new form to create a profile    
+                       signUpSection.innerHTML = 
+                           `
+                           <form id ="profile-create" class ="p-5 m-5">
+                            <h2>Create your profile</h2>
+                            <div class="form-group">
+                                <label for="first_name">First Name</label>
+                                <input type="text" class="form-control" id="first_name" placeholder="John">
+                            </div>
+                            <div class="form-group">
+                                <label for="last_name">Last Name</label>
+                                <input type="text" class="form-control" id="last_name" placeholder="Doe">
+                            </div>
+                             <div class="form-group">
+                                <label for="city">City</label>
+                                <input type="text" class="form-control" id="city" placeholder="Austin">
+                             </div>
+                             <div class="form-group">
+                                <label for="state">State</label>
+                                <input type="text" class="form-control" id="state" placeholder="Texas">
+                            </div>
+                            <div class="form-group">
+                                <label for="dob">DOB</label>
+                                <input type="date" class="form-control" id="dob" placeholder="dob">
+                            </div>
+                            <div class="form-group">
+                                <label for="gender">Gender</label><br>
+                                <label for="male">Male</label>
+                                <input type="checkbox" class="form-control" name='gendercheck' placeholder="Male" onclick="onlyOne(this)">
+                                <label for="female">female</label>
+                                <input type="checkbox" class="form-control" name='gendercheck' placeholder="Female" onclick="onlyOne(this)">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                           </form>`;
+        }
+        emailLabel.innerHTML = `<span style = "color:red; ">*Email is already in use enter a different one!</span>`
 
-    // }
-    // assigns user info to an object
-    user = {
-      email: email,
-      password: password,
-    };
-
-// removes the signup form and enters a new form to create a profile
-    signUpSection.innerHTML = 
-    `
-    <form id ="profile-create" class ="p-5 m-5">
-    <h2>Create your profile</h2>
-    <div class="form-group">
-        <label for="first_name">First Name</label>
-        <input type="text" class="form-control" id="first_name" placeholder="John">
-    </div>
-    <div class="form-group">
-        <label for="last_name">Last Name</label>
-        <input type="text" class="form-control" id="last_name" placeholder="Doe">
-    </div>
-    <div class="form-group">
-        <label for="city">City</label>
-        <input type="text" class="form-control" id="city" placeholder="Austin">
-    </div>
-    <div class="form-group">
-        <label for="state">State</label>
-        <input type="text" class="form-control" id="state" placeholder="Texas">
-    </div>
-    <div class="form-group">
-        <label for="dob">DOB</label>
-        <input type="date" class="form-control" id="dob" placeholder="dob">
-    </div>
-    <div class="form-group">
-        <label for="gender">Gender</label><br>
-        <label for="male">Male</label>
-        <input type="checkbox" class="form-control" name='gendercheck' placeholder="Male" onclick="onlyOne(this)">
-        <label for="female">female</label>
-        <input type="checkbox" class="form-control" name='gendercheck' placeholder="Female" onclick="onlyOne(this)">
-    </div>
- 
+    });
   
-    <button type="submit" class="btn btn-primary">Submit</button>
-  </form>
-  `;
+
+
+
   // starts the eventlistener for the new form
   document.querySelector("#profile-create").addEventListener("submit", createProfileHandler);
   };

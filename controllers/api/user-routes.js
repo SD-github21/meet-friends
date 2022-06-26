@@ -47,7 +47,7 @@ router.post('/', (req,res) => {
 
 });
 
-router.get('/signup', (req,res)=>{
+router.post('/signup', (req,res)=>{
   User.findOne({
     attributes:{exclude:['password']},
     where: {
@@ -67,6 +67,7 @@ router.get('/signup', (req,res)=>{
 //   res.redirect('/dashboard');
 
 // });
+
 
 
 module.exports = router;
