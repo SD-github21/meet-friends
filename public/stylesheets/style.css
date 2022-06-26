@@ -51,6 +51,9 @@ background: linear-gradient(90deg, rgba(236,222,10,0.48783263305322133) 35%, rgb
 
 }
 
+.login {
+    text-align: start;
+}
 /* -------------------------------------------------------------------------------------------- */
 #signup-form{
     background-color: white;
