@@ -1,6 +1,10 @@
 
+<div class = 'container-fluid d-flex flex-wrap' id="activities-div">
+
 {{#each this}}
-
-<button name ="activityBtn" class ='activities-btn' data-id ="{{id}}"> {{activity_name}}</button>
-
+    
+        <div id="activities-div" class="col-3"><button name ="activityBtn" class ='activities-btn' data-id ="{{id}}"> {{activity_name}}</button></div>
+  
 {{/each}}
+</div>
+

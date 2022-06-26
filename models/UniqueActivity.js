@@ -12,9 +12,14 @@ UniqueActivity.init(
             autoIncrement: true
         },
 
-        uactivity_location: {
+        city: {
             type: DataTypes.STRING,
             allowNull: false
+        },
+        state:{
+            type: DataTypes.STRING,
+            allowNull: false
+
         },
 
         uactivity_address: {
