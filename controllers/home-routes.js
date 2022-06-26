@@ -22,7 +22,7 @@ router.get('/dashboard', (req,res) =>{
         
         const activities = activityData.map( activities => activities.get({ plain: true }));
         
-        res.render('dashboard', {activities});
+        res.render('dashboard', {activities, loggedIn: true});
 
 
     })
