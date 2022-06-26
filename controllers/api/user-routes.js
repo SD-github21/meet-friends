@@ -165,17 +165,6 @@ router.post('/upload', upload.single('image'), (req,res) => {
   res.render('dashboard');
   res.redirect('/dashboard');
 
-//   User.findOne({
-//     where:{ 
-//         email: req.session.email
-//     }
-// }).then(userData => {
-//     const user = userData.get({plain:true});
-//     res.render('profile', {
-//         user,
-//         loggedIn: true
-//     });
-// })
 
 
 });
