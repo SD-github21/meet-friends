@@ -1,5 +1,9 @@
 async function logout() {
+<<<<<<< HEAD
     const response = await fetch('/api/users/logout', {
+=======
+    const response = await fetch('api/users/logout', {
+>>>>>>> teamBranch
         method: 'post', 
         headers: { 'Content-Type': 'application/json' }
     });

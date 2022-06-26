@@ -1,30 +1,25 @@
-<article>
-  <a href="/dashboard"> &larr; Back to dashboard</a>
+
+  <a href="/profile"> Back to Profile</a>
   <h2>
     Edit Profile
   </h2>
   <form class="edit-profile-form">
     <div>
-      <input name="post-activity" type="text" value="{{}}" />
-      <span>({{}})</span>
+      <input name="profile" id="first_name" type="text" value="{{user.first_name}}" />
+      <input name="profile" id="last_name" type="text" value="{{user.last_name}}" />
+      <input name="profile" id="city" type="text" value="{{user.city}}" />
+      <input name="profile" id="state" type="text" value="{{user.state}}" />
+      <input name="profile" id="dob" type="text" value="{{user.dob}}" />
+      <input name="profile" id="email" type="text" value="{{user.email}}" />
+      <input name="profile" id="password" type="text" value="{{user.password}}" />
+   
     </div>
-    <button type="submit">Save profile</button>
-    <button type="button" class="delete-profile-btn">Delete profile</button>
+    <button type="submit" class="save-profile-btn">Save Profile</button>
+    <button type="button" class="delete-profile-btn">Delete Profile</button>
   </form>
 </article>
-{{#if loggedIn}}
-<form class="profile-form">
-  <form>
-    
-  </form>
 
-  <div>
-    <button type="submit">Add Profile update</button>
-  </div>
-</form>
-{{/if}}
-{{}}
 {{#if loggedIn}}
-<script src="/javascript/edit-post.js"></script>
-<script src="/javascript/delete-post.js"></script>
+<script src="/javascript/edit-profile.js"></script>
+
 {{/if}}

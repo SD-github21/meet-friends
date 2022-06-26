@@ -1,29 +1,17 @@
 <article>
-  <a href="/dashboard"> &larr; Back to dashboard</a>
+  <a href="/profile"> Back to Profile</a>
   <h2>
     Edit Post
   </h2>
-  <form class="edit-post-form">
+  <form class="edit-post-activity">
     <div>
-      <input name="post-activity" type="text" value="{{}}" />
-      <span>({{}})</span>
+      <input name="post-activity" type="text" value="{{activity_name}}" />
     </div>
-    <button type="submit">Save post</button>
+    <button type="submit" class="edit-post-btn">Save post</button>
     <button type="button" class="delete-post-btn">Delete post</button>
   </form>
 </article>
-{{#if loggedIn}}
-<form class="comment-form">
-  <div>
-    <textarea name="comment-body"></textarea>
-  </div>
 
-  <div>
-    <button type="submit">Add</button>
-  </div>
-</form>
-{{/if}}
-{{}}
 {{#if loggedIn}}
 <script src="/javascript/edit-post.js"></script>
 <script src="/javascript/delete-post.js"></script>

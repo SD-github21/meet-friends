@@ -5,7 +5,7 @@
 //         window.location.toString().split('/').length -1
 //     ];
    
-//     //const response = await fetch(`/api`, {
+//     //const response = await fetch(`/api/activities/{$id}`, {
 //       method: 'DELETE',
 //     });
   
