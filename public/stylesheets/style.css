@@ -5,15 +5,12 @@
     --MFshadow: black;
   }
 
-body { 
+/* body { 
 background: rgb(236,222,10);
 background: linear-gradient(90deg, rgba(236,222,10,0.48783263305322133) 35%, rgba(14,224,197,0.6783088235294117) 82%);
-}
+} */
 
-.navBar {
-    display:flex;
-    justify-content: end;
-}
+
 
 .profileTitle, .profilePostText {
     color: var(--MFBlue);
@@ -39,7 +36,7 @@ background: linear-gradient(90deg, rgba(236,222,10,0.48783263305322133) 35%, rgb
 }
 
 .profileDet {
-    color: var(--MFwhite);
+    color: var(--MFshadow);
     text-shadow: 5px 0px 5px var(--MFshadow);
     font-size: 25px;
 }
