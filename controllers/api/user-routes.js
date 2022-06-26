@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User } = require('../../models');
+const { User, Activity, UniqueActivity, UserActivity } = require('../../models');
 
 // GET /api/users
 router.get('/', (req, res) => {
@@ -14,9 +14,27 @@ router.get('/', (req, res) => {
 // GET /api/users/1
 router.get('/:id', (req, res) => {
   User.findOne({
+    attributes: { exclude: ['password']},
     where: {
       id: req.params.id
-    }
+    },
+    include: [
+      {
+        model: Activity,
+        attributes: ['id', 'activity_name'],
+        through: UserActivity,
+        as: 'user_activities'
+
+      },
+      {
+        model: UniqueActivity,
+        attributes: ['id', 'uactivity_location', 'uactivity_address', 'user_id', 'activity_id'],
+        include: {
+          model: Activity,
+          attributes: ['activity_name']
+      }
+      }
+    ]
   })
    .then(dbUserData => {
     if (!dbUserData) {

@@ -38,6 +38,14 @@ router.get('/:id', (req, res) => {
         attributes: ['id', 'activity_name'],
         include: [
             {
+                model: UniqueActivity,
+                attributes: ['id', 'uactivity_location', 'uactivity_address', 'user_id', 'activity_id'],
+                include: {
+                    model: User,
+                    attributes: ['first_name', 'last_name']
+                }
+            },
+            {
                 model: User,
                 attributes: ['id', 'first_name', 'last_name', 'avatar', 'dob'],
                 through: UserActivity,
@@ -58,6 +66,7 @@ router.get('/:id', (req, res) => {
      });
 });
 
+// commented out these routes due to concern that they would not be appropriate for front end functionality 
 // // create a activity
 // router.post('/', (req, res) => {
 //     Activity.create({
