@@ -40,16 +40,17 @@ async function editProfileHandler(event){
     const user_id = window.location.toString().split('/')[
       window.location.toString().split('/').length - 1
     ];
-    const response = await fetch(`/api/users/${user_id}`, {
+    const response = await fetch(`/api/users/delete/${user_id}`, {
       method: 'DELETE'
     });
   
     if (response.ok) {
+      console.log("hey you")
       document.location.replace('/');
     } else {
       alert(response.statusText);
     }
   }
   
-document.querySelector('.save-profile-btn').addEventListener('submit', editProfileHandler)
-document.querySelector('.delete-profile-btn').addEventListener('submit', deleteProfileHandler)
+document.querySelector('.save-profile-btn').addEventListener('click', editProfileHandler)
+document.querySelector('.delete-profile-btn').addEventListener('click', deleteProfileHandler)

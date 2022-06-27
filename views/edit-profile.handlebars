@@ -1,30 +1,47 @@
 
-  <a href="/profile"> Back to Profile</a>
   <h2>
     Edit Profile
   </h2>
-  <form class="edit-profile-form">
-    <div>
-      <label for="first_name" class="form-label">First Name</label>
-      <input name="profile" id="first_name" type="text" value="{{user.first_name}}" />
-      <label for="last_name" class="form-label">Last Name</label>
-      <input name="profile" id="last_name" type="text" value="{{user.last_name}}" />
-      <label for="city" class="form-label">City</label>
-      <input name="profile" id="city" type="text" value="{{user.city}}" />
-      <label for="state" class="form-label">State</label>
-      <input name="profile" id="state" type="text" value="{{user.state}}" />
-      <label for="DOB" class="form-label">Date of Birth</label>
-      <input name="profile" id="dob" type="text" value="{{user.dob}}" />
-      <label for="gender" class="form-label">gender</label>
-      <input name="profile" id="gender" type="text" value="{{user.gender}}" />
-   
+
+<form class="profileEditForm"
+    <div class="row">
+    <div class="col">
+    <input type="text" class="form-control" placeholder="First name" aria-label="First name" value="{{user.first_name}}" />
     </div>
+    <div class="col">
+    <input type="text" class="form-control" placeholder="Last name" aria-label="Last name" value="{{user.last_name}}" />
+    </div>
+    </div>
+      <div class="mb-3">
+      <label for="formGroupExampleInput" class="form-label">City</label>
+      <input type="text" class="form-control" id="editCity" placeholder="City" value="{{user.city}}"/>
+      </div>
+      <div class="mb-3">
+      <label for="formGroupExampleInput2" class="form-label">State</label>
+      <input type="text" class="form-control" id="editState" placeholder="State" value="{{user.state}}"/>
+      </div>
+      <div class="mb-3">
+      <label for="formGroupExampleInput" class="form-label">Date of Birth</label>
+      <input type="text" class="form-control" id="editdob" placeholder="Date of Birth" value="{{user.dob}}" />
+      </div>
+       <div class="mb-3">
+      <label for="formGroupExampleInput" class="form-label">Gender</label>
+      <input type="text" class="form-control" id="gender" placeholder="Gender" value="{{user.gender}}" />
+      </div>
+       <div class="mb-3">
+      <label for="formGroupExampleInput" class="form-label">Email</label>
+      <input type="text" class="form-control" id="email" placeholder="Email" value="{{user.email}}" />
+      </div>
+  </div>
+  </form>
+  
     <button type="submit" class="save-profile-btn">Save Profile</button>
     <button type="button" class="delete-profile-btn">Delete Profile</button>
   </form>
 </article>
 
 {{#if loggedIn}}
-<script src="/javascript/edit-profile.js"></script>
+<script src="../public/javascript/edit-profile.js"></script>
+<script src="../pulic/javascript/delete-profile.js"></script>
 
 {{/if}}
