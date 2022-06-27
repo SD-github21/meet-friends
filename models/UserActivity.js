@@ -37,5 +37,3 @@ UserActivity.init(
 
 
 module.exports = UserActivity;
-
-

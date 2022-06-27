@@ -40,9 +40,11 @@ async function signupFormHandler(event) {
         }),
         headers: { 'Content-Type': 'application/json' }
     }).then((response) =>{
+        
        
         return response.json()
     }).then(userData => {
+        console.log('hello' + userData);
         if(!userData){
             // assigns user info to an object
                 user = {
@@ -84,6 +86,8 @@ async function signupFormHandler(event) {
                             </div>
                             <button type="submit" class="btn btn-primary">Submit</button>
                            </form>`;
+                           // starts the eventlistener for the new form
+                            document.querySelector("#profile-create").addEventListener("submit", createProfileHandler);
         }
         emailLabel.innerHTML = `<span style = "color:red; ">*Email is already in use enter a different one!</span>`
 
@@ -92,8 +96,7 @@ async function signupFormHandler(event) {
 
 
 
-  // starts the eventlistener for the new form
-  document.querySelector("#profile-create").addEventListener("submit", createProfileHandler);
+  
   };
   
 };
@@ -109,7 +112,7 @@ async function createProfileHandler(event){
     const dOB = document.querySelector('#dob').value.trim();
     const email = user.email;
     const password = user.password;
-
+    console.log('hello create profile');
     
 // if all the field are no empty does a post request
     if(firstName && lastName && city && state && dOB){
@@ -128,6 +131,7 @@ async function createProfileHandler(event){
             headers: { 'Content-Type': 'application/json' }
         });
         if(response.ok){
+            console.log('hello user');
             document.location.replace('/dashboard');
         }else{
             alert(response.statusText);
