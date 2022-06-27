@@ -13,7 +13,7 @@ router.get('/',(req,res) =>{
     res.render('homepage');
 });
 
-router.get('/dashboard', (req,res) =>{
+router.get('/dashboard', authorizeUser, (req,res) =>{
     Activity.findAll()
     .then(activityData => {
         if(!activityData){
@@ -35,7 +35,7 @@ router.get('/signup', (req,res) =>{
     res.render('signup')
 })
 
-router.get('/profile', (req,res) =>{
+router.get('/profile', authorizeUser, (req,res) =>{
 
     User.findOne({
         where:{ 

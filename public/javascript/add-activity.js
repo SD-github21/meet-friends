@@ -20,6 +20,9 @@ async function addActivity(event) {
     state: activityState,
   };
 
+  if(activity.category && activity.location && activity.address && activity.address && activity.city &&activity.state){
+    const response1 = await fetch(`/api/user-activity`)
+  }
 
   
 }

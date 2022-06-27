@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, UniqueActivity } = require('../../models');
+const { User, UniqueActivity , UserActivity} = require('../../models');
 const upload = require('../../config/imageStorage');
 const multer = require('multer')
 
@@ -62,7 +62,16 @@ router.post('/', (req,res) => {
       avatar: 'profile-image'
       
     })
-    .then(userData => res.json(userData))
+    .then(userData => {
+      req.session.save(() => {
+        req.session.user_id = userData.id;
+        req.session.username = userData.email;
+        req.session.loggedIn = true;
+    
+        res.json(userData);
+})})
+ 
+    
       .catch(err => {
         console.log(err);
         res.status(500).json(err);
@@ -70,6 +79,19 @@ router.post('/', (req,res) => {
 
 });
 
+router.post('/user-activity', (req,res) =>{
+  UserActivity.create({
+    user_id: req.session.user_id,
+    activity_id: req.body.activity.category
+  }) 
+  
+  .then(userData => res.json(userData))
+  .catch(err => {
+    console.log(err);
+    res.status(500).json(err);
+  });
+
+})
 router.post('/login', (req, res) => {
   User.findOne({
     where: {
@@ -77,6 +99,7 @@ router.post('/login', (req, res) => {
       
     }
   }).then(dbUserData => {
+   
     if (!dbUserData) {
       res.status(400).json({ message: 'No user with that email address!' });
       return;
@@ -88,10 +111,10 @@ router.post('/login', (req, res) => {
       res.status(400).json({ message: 'Incorrect password!' });
       return;
     }
-
+      
       req.session.save(() => {
       // declare session variables
-      req.session.id = dbUserData.id;
+      req.session.user_id = dbUserData.id;
       req.session.email = dbUserData.email;
       req.session.loggedIn = true;
 
