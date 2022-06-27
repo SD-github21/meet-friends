@@ -131,7 +131,6 @@ async function createProfileHandler(event){
             headers: { 'Content-Type': 'application/json' }
         });
         if(response.ok){
-            console.log('hello user');
             document.location.replace('/dashboard');
         }else{
             alert(response.statusText);

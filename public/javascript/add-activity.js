@@ -1,5 +1,7 @@
 /** @format */
 
+
+
 //req.session.user_id
 
 async function addActivity(event) {
@@ -20,11 +22,44 @@ async function addActivity(event) {
     state: activityState,
   };
 
-  if(activity.category && activity.location && activity.address && activity.address && activity.city &&activity.state){
-    const response1 = await fetch(`/api/user-activity`)
-  }
 
+
+  if(activity.category && activity.location && activity.address && activity.address && activity.city &&activity.state){
+    
+     fetch(`api/activities/${activity.category}`,{
+        method:'GET',
+        })
+    .then(actData => actData.json() )
+    .then(parsedActData => {
+      fetch(`api/users/user-activity`,{
+        method:"POST",
+        body:JSON.stringify({
+          category: parsedActData.id,  
+        }),
+        headers:{
+          'Content-Type': 'application/json'
+        }
+      }).catch(err => console.log(err))
+
+    })
+    .catch(err => console.log(err));
+    console.log(activity.category);
+    if(typeof activity.category === 'number'){
+      console.log(activity.category);
+    }
+  }
   
+
 }
+
+    
+    // const response1 = await fetch(`/api/users/user-activity`,{
+    //   method:'POST',
+    //   body: JSON.stringify({
+    //     activity.activityCategory
+    //   })
+    // })
+  
+
 
 document.querySelector("#post-activity-form").addEventListener("submit", addActivity);

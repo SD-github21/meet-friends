@@ -28,6 +28,21 @@ router.get("/", (req, res) => {
     });
 });
 
+router.get("/:activity_name", (req, res) => {
+  Activity.findOne({
+    where:{
+      activity_name: req.params.activity_name
+    },
+    attributes: ["id", "activity_name"],
+ 
+  })
+    .then((dbActivityData) => res.json(dbActivityData))
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
 // get one user
 router.get("/:id", (req, res) => {
   Activity.findOne({
