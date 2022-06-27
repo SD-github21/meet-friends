@@ -5,13 +5,18 @@
   </h2>
   <form class="edit-profile-form">
     <div>
+      <label for="first_name" class="form-label">First Name</label>
       <input name="profile" id="first_name" type="text" value="{{user.first_name}}" />
+      <label for="last_name" class="form-label">Last Name</label>
       <input name="profile" id="last_name" type="text" value="{{user.last_name}}" />
+      <label for="city" class="form-label">City</label>
       <input name="profile" id="city" type="text" value="{{user.city}}" />
+      <label for="state" class="form-label">State</label>
       <input name="profile" id="state" type="text" value="{{user.state}}" />
+      <label for="DOB" class="form-label">Date of Birth</label>
       <input name="profile" id="dob" type="text" value="{{user.dob}}" />
-      <input name="profile" id="email" type="text" value="{{user.email}}" />
-      <input name="profile" id="password" type="text" value="{{user.password}}" />
+      <label for="gender" class="form-label">gender</label>
+      <input name="profile" id="gender" type="text" value="{{user.gender}}" />
    
     </div>
     <button type="submit" class="save-profile-btn">Save Profile</button>

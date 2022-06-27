@@ -7,21 +7,19 @@ async function editProfileHandler(event){
       const city = document.querySelector('#city').value.trim();
       const state= document.querySelector('#state').value.trim();
       const dob = document.querySelector('#dob').value.trim();
-      const email = user.email;
-      const password = user.password;
+      const gender = document.querySelector('#gender').value.trim();
+      
   
-   const response = await fetch(`/api/profile/${user_id}`, {
+   const response = await fetch(`/api/users/edit/${user_id}`, {
       method: 'PUT',
       body: JSON.stringify({
         first_name,
         last_name,
-        email,
-        password,
         city, 
         state, 
         dob,
         gender,
-        avatar
+        
         
       }),
       headers: {
@@ -39,10 +37,10 @@ async function editProfileHandler(event){
   async function deleteProfileHandler(event) {
     event.preventDefault();
   
-    const id = window.location.toString().split('/')[
+    const user_id = window.location.toString().split('/')[
       window.location.toString().split('/').length - 1
     ];
-    const response = await fetch(`/api/users/${id}`, {
+    const response = await fetch(`/api/users/${user_id}`, {
       method: 'DELETE'
     });
   

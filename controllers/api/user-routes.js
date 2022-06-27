@@ -1,7 +1,8 @@
 const router = require('express').Router();
 const { User } = require('../../models');
 const upload = require('../../config/imageStorage');
-const multer = require('multer')
+const multer = require('multer');
+const authorizeUser = require('../../utils/auth');
 
 // GET /api/users
 router.get('/', (req, res) => {
@@ -169,14 +170,14 @@ router.post('/logout', (req, res) => {
 
 
 router.post('/upload', upload.single('image'), (req,res) => {
- // once image uploaded do another fetch (PUT - update image )
-
+ // once image uploaded do another fetch (PUT - update image 
+// .then (router.put('/profile))}
  // SAVE IMAGE NAME TO VARIABLE  FETCH PUT REQUEST TO USER UPDATE USER ../img/${variableIMAGENAME} user avatar 
 
  // REFRESH DASHBOARD WITH NEW USER DATA
 
-  res.render('dashboard');
-  res.redirect('/dashboard');
+  res.render('profile');
+  res.redirect('/profile');
 
 //   User.findOne({
 //     where:{ 
@@ -192,6 +193,105 @@ router.post('/upload', upload.single('image'), (req,res) => {
 
 
 });
+// GET /api/users/1
+router.get('/:id', (req, res) => {
+  User.findOne({
+    where: {
+      id: req.params.id
+    }
+  })
+   .then(dbUserData => {
+    if (!dbUserData) {
+      res.status(404).json({ message: 'No user found with this id' });
+      return;
+    }
+    res.json(dbUserData);
+   })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+})
+
+
+
+router.get('/edit/:id', (req, res) => {
+  User.findOne({
+      where: {
+        id: req.params.id
+      },
+      
+    })
+      .then(dbProfileData => {
+        if (!dbProfileData) {
+          res.status(404).json({ message: 'No user found with this id' });
+          return;
+        }
+ 
+        const profile = dbProfileData.get({ plain: true });
+  
+        res.render('edit-profile', {
+          profile,
+          loggedIn: req.session.loggedIn
+        });
+      })
+      .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+      });
+  });
+  
+  router.put('/edit/:id', (req, res) => {
+    User.update(
+      {
+        first_name: req.body.first_name,
+        last_name: req.body.last_name,
+        email: req.body.email,
+        password: req.body.password,
+        city: req.body.city, 
+        state: req.body.state, 
+        dob: req.body.dob,
+        gender: req.body.gender
+                
+      },
+      {
+        where: {
+          id: req.params.id
+        }
+      }
+    )
+      .then(dbProfileData => {
+        if (!dbProfileData) {
+          res.status(404).json({ message: 'No post found with this id' });
+          return;
+        }
+        res.json(dbProfileData);
+      })
+      .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+      });
+  });
+  
+  router.delete('/:id', authorizeUser, (req, res) => {
+    console.log('id', req.params.id);
+    User.destroy({
+      where: {
+        id: req.params.id
+      }
+    })
+      .then(dbProfileData => {
+        if (!dbProfileData) {
+          res.status(404).json({ message: 'No post found with this id' });
+          return;
+        }
+        res.json(dbProfileData);
+      })
+      .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+      });
+  });
 
 
 module.exports = router;
