@@ -51,9 +51,15 @@ background: linear-gradient(90deg, rgba(236,222,10,0.48783263305322133) 35%, rgb
 
 }
 
+.cont-background {
+    background-color: rgba(255, 255, 255, 0.75);
+    box-shadow: 10px 10px 10px rgb(10, 228, 10);
+    border: 2px solid yellow;
+}
+
 /* -------------------------------------------------------------------------------------------- */
 #signup-form{
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.75);
     color: black;
     border-radius: 2%;
     border: 2px solid yellow;
