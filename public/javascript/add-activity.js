@@ -31,6 +31,7 @@ async function addActivity(event) {
         })
     .then(actData => actData.json() )
     .then(parsedActData => {
+      console.log(parsedActData);
       fetch(`api/users/user-activity`,{
         method:"POST",
         body:JSON.stringify({
@@ -43,12 +44,12 @@ async function addActivity(event) {
 
     })
     .catch(err => console.log(err));
-    console.log(activity.category);
+    
     if(typeof activity.category === 'number'){
-      console.log(activity.category);
+      
     }
   }
-  
+
 
 }
 

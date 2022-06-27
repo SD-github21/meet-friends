@@ -30,17 +30,18 @@ const dashboardSectionData = (activityData) => {
 const clickHandler = (event) => {
   const activityId = event.target.attributes[2].value;
   const isBtn = "activityBtn";
-  
+  console.log(activityId);
   if(event.target.name === isBtn && activityId){
       const response =  fetch(`/api/activities/${activityId}`,{
           method: 'GET'
       })
       .then(response => response.json() )
       .then(activityData => {
-          console.log(activityData.users);
+          console.log(activityData);
           const dashboardSectionEL = document.querySelector('#activities-div');
 
           if(activityData.users){
+            console.log('hello friend');
               dashboardSectionEL.innerHTML = `
               ${dashboardSectionData(activityData)}
 

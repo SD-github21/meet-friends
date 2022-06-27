@@ -28,23 +28,14 @@ router.get("/", (req, res) => {
     });
 });
 
-router.get("/:activity_name", (req, res) => {
-  Activity.findOne({
-    where:{
-      activity_name: req.params.activity_name
-    },
-    attributes: ["id", "activity_name"],
- 
-  })
-    .then((dbActivityData) => res.json(dbActivityData))
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json(err);
-    });
-});
+
 
 // get one user
 router.get("/:id", (req, res) => {
+  
+ if(isNaN(parseInt(req.params.id)) === false){
+  console.log('true');
+
   Activity.findOne({
     attributes: { exclude: ["password"] },
     where: {
@@ -66,10 +57,44 @@ router.get("/:id", (req, res) => {
       res.json(dbActivityData);
     })
     .catch((err) => {
-      console.log(err);
+      
       res.status(500).json(err);
     });
+  }
+  else{
+ 
+    console.log('second');
+    Activity.findOne({
+      where:{
+        activity_name: req.params.id
+      },
+      attributes: ["id", "activity_name"],
+   
+    })
+      .then((dbActivityData) => res.json(dbActivityData))
+      .catch((err) => {
+        console.log(err);
+        res.status(500).json(err);
+      });
+
+  }
 });
+
+
+// router.get("/:activity_name", (req, res) => {
+//   Activity.findOne({
+//     where:{
+//       activity_name: req.params.activity_name
+//     },
+//     attributes: ["id", "activity_name"],
+ 
+//   })
+//     .then((dbActivityData) => res.json(dbActivityData))
+//     .catch((err) => {
+//       console.log(err);
+//       res.status(500).json(err);
+//     });
+// });
 
 // create a activity
 router.post("/", (req, res) => {
