@@ -7,7 +7,7 @@ const { Activity, User} = require('../models');
 //Setup check to see if user is signed in
 const authorizeUser = require('../utils/auth');
 const {storage , upload }  = require('../config/imageStorage');
-const cookieParser = require("cookie-parser")
+
 
 router.get('/',(req,res) =>{
     res.render('homepage');
