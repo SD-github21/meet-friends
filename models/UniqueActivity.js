@@ -22,10 +22,15 @@ UniqueActivity.init(
 
         },
 
-        uactivity_address: {
+        address: {
             type: DataTypes.STRING,
             allowNull: false
         },
+        location_name:{
+            type: DataTypes.STRING,
+            allowNull:false
+        },
+
         // define foreign key with user
         user_id: {
             type: DataTypes.INTEGER,

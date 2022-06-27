@@ -1,10 +1,10 @@
 <section id="User Activity" class ='container-fluid'>
 
     <h2 id="post-activity-title">Post an activity</h2>
-    <form>
+    <form id="post-activity-form">
    <div class="form-group">
       <label for="inputCategory">Activity Category</label>
-      <select id="inputCategory" class="form-control">
+      <select id="activityCategory" class="form-control">
         <option selected>Choose...</option>
         
             {{#each activities}}
@@ -17,27 +17,27 @@
     </div>
     <div class="form-group">
     <label for="inputAddress">Location Name</label>
-    <input type="text" class="form-control" id="inputAddress" placeholder="Zilker Park">
+    <input type="text" class="form-control" id="activityLocation" placeholder="Zilker Park">
   </div>
   <div class="form-group">
     <label for="inputAddress">Activity Address</label>
-    <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+    <input type="text" class="form-control" id="activityAddress" placeholder="1234 Main St">
   </div>
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="inputCity">City</label>
-      <input type="text" class="form-control" id="inputCity">
+      <input type="text" class="form-control" id="activityCity">
     </div>
     <div class="form-group col-md-6">
       <label for="inputState">State</label>
 
-       <input type="text" class="form-control" id="inputCity">
+       <input type="text" class="form-control" id="activityState">
       </select>
     </div>
   </div>
   <div class="form-group">
   </div>
-  <button type="submit" class="btn btn-primary">Add</button>
+  <button id="addPostBtn" type="submit" class="btn btn-primary">Add</button>
 </form>
 
 
@@ -59,6 +59,6 @@
     {{/if}}
 
     
-
+<script src="../javascript/add-activity.js"></script>
 <script src="../javascript/dashboard.js"></script>
 </section>

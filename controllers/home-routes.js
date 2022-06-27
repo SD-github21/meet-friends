@@ -7,6 +7,7 @@ const { Activity, User} = require('../models');
 //Setup check to see if user is signed in
 const authorizeUser = require('../utils/auth');
 const {storage , upload }  = require('../config/imageStorage');
+const cookieParser = require("cookie-parser")
 
 router.get('/',(req,res) =>{
     res.render('homepage');
@@ -21,7 +22,6 @@ router.get('/dashboard', (req,res) =>{
         }
         
         const activities = activityData.map( activities => activities.get({ plain: true }));
-        
         res.render('dashboard', {activities, loggedIn: true});
 
 

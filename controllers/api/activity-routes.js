@@ -1,7 +1,7 @@
 /** @format */
 
 const router = require("express").Router();
-const { User, Activity, UserActivity } = require("../../models");
+const { User, Activity, UserActivity, UniqueActivity } = require("../../models");
 
 // get all users
 router.get("/", (req, res) => {
@@ -12,7 +12,13 @@ router.get("/", (req, res) => {
         model: User,
         attributes: ["id", "first_name", "last_name", "avatar", "dob"],
         through: UserActivity,
+        include:{
+            model: UniqueActivity
+
+        }
+        
       },
+  
     ],
   })
     .then((dbActivityData) => res.json(dbActivityData))
