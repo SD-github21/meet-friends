@@ -180,19 +180,49 @@ router.post('/signup', (req,res)=>{
   });
 })
 
-router.post('/upload', upload.single('image'), (req,res) => {
- // once image uploaded do another fetch (PUT - update image )
-
- // SAVE IMAGE NAME TO VARIABLE  FETCH PUT REQUEST TO USER UPDATE USER ../img/${variableIMAGENAME} user avatar 
-
- // REFRESH DASHBOARD WITH NEW USER DATA
-
-  res.render('dashboard');
-  res.redirect('/dashboard');
+router.post('/upload', upload.single('image'), (req, res) => {
+  if (!req.file) {
+    console.log("No file received");
+    return res.send({
+      success: false
+    });}
 
 
+            
+ 
+    res.redirect('/profile')
+    
 
-});
+      
+  });
+ 
+   
+ router.put('/avatar/:id', (req,res) => {
+ 
+  User.update(
+    {
+      avatar: req.body.avatar
+    },
+    
+   {
+    where:{
+      id: req.session.user_id
+    }
+  })
+  .then(dbUserData => {
+    if (!dbUserData) {
+      res.status(404).json({ message: 'No user found with this id' });
+      return;
+    }
+    
+    res.json(dbUserData);
+   })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+ });
+
 
 
 module.exports = router;
