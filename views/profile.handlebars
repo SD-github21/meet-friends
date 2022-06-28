@@ -1,9 +1,8 @@
 
-<div class="container .mb-10rem profileView">
-  <div class="row justify-content-around px-5 py-5">
-    <div class="col-lg-6">
+<div class="container-fluid row profileView m-1">
+    <div class=" col-12 col-md-2  mr-1">
 
-      <div class="card bg-light bg-opacity-25 rounded shadow" style="width: 20rem;">
+      <div class="card bg-light bg-opacity-25 rounded shadow">
             <img class="card-img-top" src="../img/{{user.avatar}}" alt="Profile Image">
             <div id="upload-div"><form id='img-upload-form' method="POST" action="/api/users/upload" enctype="multipart/form-data">
               <input id='img-file-field' type="file" name="image" value="{{user.avatar}}">
@@ -14,22 +13,22 @@
           <h3 class="card-subtitle mb-2 profileName">{{user.first_name}} {{user.last_name}}</h3>
           <p class="card-text profileDet">{{user.gender}}</p>
           <p class="card-text profileDet">Location: {{user.city}}, {{user.state}}</p>
-          <p ="card-text profileDet">Age: {{user.dob}}</p>
-          <a href="" class="card-text profileDet">email: {{user.email}}</p>
+          <p ="card-text profileDet">Age: {{user.age}}</p>
           <a href="api/users/edit/{{user.id}}" class="cart-text editLink">Edit Profile</a>
           
         </div>
-
       </div>
+
+     
       
     </div>
 
-        <div class="col-lg-6 bg-light bg-opacity-25 rounded shadow">
+    <div class=" col-12 col-md-9 bg-light bg-opacity-25 rounded shadow border border-dark">
          <h2 class="profilePostText px-4 py-4">Active Posts</h2>
           {{#if user.uniqueactivities }}
-            
+            <div class="container-fluid row d-flex flex-wrap">
               {{#each user.uniqueactivities}}
-                      <div class="card bg-light bg-opacity-25 rounded shadow" style="width: 20rem;">
+                      <div class="card bg-light bg-opacity-25 rounded shadow col-12 col-md-3" style="width: 20rem;">
                          <div class="card-body">   
                           <h3 class="card-subtitle mb-2 profileName">Activity: {{activity.activity_name}}</h3>
                           <p class="card-text profileDet">Location: {{location_name}}</p>
@@ -38,15 +37,12 @@
                         </div>
                       </div>
                {{/each}}
-         
+              </div>
           {{/if}}
        
-        </div>
-    
-        </div>
-      </div>
     </div>
-  </div>
+    
+       
 </div>
 
 

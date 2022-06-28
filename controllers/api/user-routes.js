@@ -72,7 +72,7 @@ router.post('/', (req,res) => {
       last_name: req.body.last_name,
       city: req.body.city,
       state: req.body.state,
-      age: req.body.dob,
+      age: req.body.age,
       gender: req.body.gender,
       avatar: 'profile-image'
       

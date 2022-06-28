@@ -75,7 +75,7 @@ async function signupFormHandler(event) {
                             </div>
                             <div class="form-group">
                                 <label for="dob">Age</label>
-                                <input type="text" class="form-control" id="dob" placeholder="dob">
+                                <input type="text" class="form-control" id="dob" placeholder="33">
                             </div>
                             <div class="form-group">
                                 <label for="gender">Gender</label><br>
@@ -123,7 +123,7 @@ async function createProfileHandler(event){
                 last_name: lastName,
                 city,
                 state,
-                age:dOB,
+                age: dOB,
                 email,
                 password,
                 gender
@@ -131,7 +131,7 @@ async function createProfileHandler(event){
             headers: { 'Content-Type': 'application/json' }
         });
         if(response.ok){
-            console.log('hello user');
+            
             document.location.replace('/dashboard');
         }else{
             alert(response.statusText);

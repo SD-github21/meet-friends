@@ -76,7 +76,7 @@ background: linear-gradient(90deg, rgba(236,222,10,0.48783263305322133) 35%, rgb
 
 .card-cover{
     position: absolute;
-    width: 439.8px;
+    width: 338.60px;
     height: 500px;
     z-index: 50;
 }
@@ -85,14 +85,11 @@ background: linear-gradient(90deg, rgba(236,222,10,0.48783263305322133) 35%, rgb
     z-index: 0;
 }
 
-/* .card-div:hover{
-    transform: scale(110%);
-    position: fixed;
-    left: 5%;
-    top: 5%;
-    z-index: 99;
-    width:50%;
-    background-color: black;
-    
 
-} */
+
+#meet-friends-description{
+    font-size: 35px;
+    color: white;
+    font-weight: bolder;
+    background-color: rgba(0, 0, 0, 0.349);
+}

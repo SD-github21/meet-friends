@@ -13,12 +13,12 @@ const dashboardSectionData = (activityData) => {
         <div class="card" style='width: 100%; height: 100%;'>
             <div class="card-img-top"  style='width: 100%; height: 50%; background-image: url("../img/${user.avatar}"); background-size: cover; background-position: center;  '></div>
             
-            <div class="card-body" style='width: 100%; height: 30%;'>              
+            <div class="card-body" style='width: 100%; height: 15%;'>              
                 <h3 class="card-subtitle mb-2 profileName" style='width: 100%; height: 100%;>${user.first_name}</h3>
                 <p class="card-text profileDet" style='width: 100%; height: 100%;>Location: ${
                     user.city + ' , '+ user.state
                 }</p>
-                <p class="card-text profileDet" > Age: ${user.dob}</p>
+                <p class="card-text profileDet" > Age: ${user.age}</p>
                 
             </div>
         </div>
