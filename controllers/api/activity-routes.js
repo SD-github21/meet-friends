@@ -10,7 +10,7 @@ router.get("/", (req, res) => {
     include: [
       {
         model: User,
-        attributes: ["id", "first_name", "last_name", "avatar", "dob"],
+        attributes: ["id", "first_name", "last_name", "avatar", "age"],
         through: UserActivity,
         include:{
             model: UniqueActivity

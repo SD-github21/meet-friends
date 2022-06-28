@@ -95,11 +95,10 @@ router.post('/', (req,res) => {
 });
 
 
-// /req.session.user_id
 
 router.post('/user-activity', (req,res) =>{
   UserActivity.create({
-    user_id: req.body.user_id,
+    user_id: req.session.user_id,
     activity_id: req.body.category
   }) 
   
