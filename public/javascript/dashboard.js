@@ -8,7 +8,7 @@ const dashboardSectionData = (activityData) => {
   const people = activityData.users.map((user) => {
     return ` 
     <div class ="card-div  justify-content-center m-2"  >
-        <div class='card-cover' data-user="${user.id}"></div>
+        <a href="/profile/${user.id}"> <div class='card-cover'></div></a>
      
         <div class="card" style='width: 100%; height: 100%;'>
             <div class="card-img-top"  style='width: 100%; height: 50%; background-image: url("../img/${user.avatar}"); background-size: cover; background-position: center;  '></div>

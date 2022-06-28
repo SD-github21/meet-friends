@@ -1,0 +1,45 @@
+
+<div class="container-fluid row profileView m-1">
+    <div class=" col-12 col-md-2  mr-1">
+
+      <div class="card bg-light bg-opacity-25 rounded shadow">
+            <img class="card-img-top" src="../img/{{user.avatar}}" alt="Profile Image">
+            <div class="card-body">   
+              <!--Profile info fill in proper terms-->            
+          <h3 class="card-subtitle mb-2 profileName">{{user.first_name}} {{user.last_name}}</h3>
+          <p class="card-text profileDet">{{user.gender}}</p>
+          <p class="card-text profileDet">Location: {{user.city}}, {{user.state}}</p>
+          <p ="card-text profileDet">Age: {{user.age}}</p>
+          <a href = "mailto: {{user.email}}">Contact Me</a>
+          
+        </div>
+      </div>
+
+     
+      
+    </div>
+
+    <div class=" col-12 col-md-9 bg-light bg-opacity-25 rounded shadow border border-dark">
+         <h2 class="profilePostText px-4 py-4">Active Posts</h2>
+          {{#if user.uniqueactivities }}
+            <div class="container-fluid row d-flex flex-wrap">
+              {{#each user.uniqueactivities}}
+                      <div class="card bg-light bg-opacity-25 rounded shadow col-12 col-md-3" style="width: 20rem;">
+                         <div class="card-body">   
+                          <h3 class="card-subtitle mb-2 profileName">Activity: {{activity.activity_name}}</h3>
+                          <p class="card-text profileDet">Location: {{location_name}}</p>
+                          <p ="card-text profileDet">Address {{address}}</p>
+                         
+                        </div>
+                      </div>
+               {{/each}}
+              </div>
+          {{/if}}
+       
+    </div>
+    
+       
+</div>
+
+
+<script src="../javascript/profile.js"></script>

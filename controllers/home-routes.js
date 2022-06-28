@@ -61,4 +61,30 @@ router.get('/profile', authorizeUser, (req,res) =>{
 
 });
 
+router.get('/profile/:id', authorizeUser, (req,res) =>{
+
+    User.findOne({
+        where:{ 
+            id: req.params.id
+        },
+        include:{
+          model: UniqueActivity,
+           include:{ 
+                    model: Activity,
+                    
+                   }
+                
+                }
+    }).then(userData => {
+        const user = userData.get({plain:true});
+        console.log(user);
+        res.render('user-profile', {
+            user,
+            loggedIn: true
+        });
+    })
+    
+
+});
+
 module.exports = router;
