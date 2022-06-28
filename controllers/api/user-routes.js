@@ -82,7 +82,7 @@ router.post('/', (req,res) => {
 router.post('/user-activity', (req,res) =>{
   UserActivity.create({
     user_id: req.session.user_id,
-    activity_id: req.body.activity.category
+    activity_id: req.body.category
   }) 
   
   .then(userData => res.json(userData))

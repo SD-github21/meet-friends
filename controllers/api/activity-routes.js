@@ -28,33 +28,64 @@ router.get("/", (req, res) => {
     });
 });
 
-// get one user
+
 router.get("/:id", (req, res) => {
-  Activity.findOne({
-    attributes: { exclude: ["password"] },
-    where: {
-      id: req.params.id,
-    },
-    attributes: ["id", "activity_name"],
-    include: [
-      {
-        model: User,
-        through: UserActivity,
-      },
-    ],
-  })
-    .then((dbActivityData) => {
-      if (!dbActivityData) {
-        res.status(404).json({ message: "No activity found with this id" });
-        return;
-      }
-      res.json(dbActivityData);
-    })
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json(err);
-    });
-});
+
+    if(isNaN(parseInt(req.params.id)) === false){
+     console.log('true');
+   
+     Activity.findOne({
+       attributes: { exclude: ["password"] },
+       where: {
+   
+     }
+     else{
+   
+       console.log('second');
+       Activity.findOne({
+         where:{
+           activity_name: req.params.id
+         },
+         attributes: ["id", "activity_name"],
+   
+       })
+         .then((dbActivityData) => res.json(dbActivityData))
+         .catch((err) => {
+           console.log(err);
+           res.status(500).json(err);
+         });
+   
+     }
+   });
+   
+
+// get one user
+// router.get("/:id", (req, res) => {
+//   Activity.findOne({
+//     attributes: { exclude: ["password"] },
+//     where: {
+//       id: req.params.id,
+//     },
+//     attributes: ["id", "activity_name"],
+//     include: [
+//       {
+//         model: User,
+//         through: UserActivity,
+//       },
+//     ],
+//   })
+//     .then((dbActivityData) => {
+//       if (!dbActivityData) {
+//         res.status(404).json({ message: "No activity found with this id" });
+//         return;
+//       }
+//       res.json(dbActivityData);
+//     })
+//     .catch((err) => {
+//       console.log(err);
+//       res.status(500).json(err);
+//     });
+// });
 
 // create a activity
 router.post("/", (req, res) => {
