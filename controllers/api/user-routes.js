@@ -174,42 +174,47 @@ router.post('/upload', upload.single('image'), (req, res) => {
     console.log("No file received");
     return res.send({
       success: false
-    });
+    });}
 
-  } else {
-   console.log(req.file.filename)
-           const profileImg = req.file.filename
-      
-      User.update({
-        avatar: profileImg
-      },
-       {
-        where:{
-          id: req.session.user_id
-        }
-      })
-      .then(dbUserData => {
-        if (!dbUserData) {
-          res.status(404).json({ message: 'No user found with this id' });
-          return;
-        }
-        res.json(dbUserData);
-       })
-        .catch(err => {
-          console.log(err);
-          res.status(500).json(err);
-        });
+
             
-          res.render('profile', {
-            profileImg,
-            loggedIn: req.session.loggedIn
-          });
-          return;
-          }
-        });
+ 
+    res.redirect('/profile')
+    
+
+      
+  });
  
    
+ router.put('/avatar/:id', (req,res) => {
+ 
+  User.update(
+    {
+      avatar: req.body.avatar
+    },
     
+   {
+    where:{
+      id: req.session.user_id
+    }
+  })
+  .then(dbUserData => {
+    if (!dbUserData) {
+      res.status(404).json({ message: 'No user found with this id' });
+      return;
+    }
+    
+    res.json(dbUserData);
+   })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+ });
+
+
+
+  
 
 
 // //       const profilePic = 

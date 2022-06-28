@@ -4,11 +4,11 @@
     <div class="col-lg-6">
 
       <div class="card bg-light bg-opacity-25 rounded shadow" style="width: 20rem;">
-            <img class="card-img-top" src="{{user.avatar}}" alt="Profile Image">
-            <form method="POST" action="/api/users/upload" enctype="multipart/form-data">
-              <input type="file" name="image" value="{{user.avatar}}">
+            <img class="card-img-top" src="../img/{{user.avatar}}" alt="Profile Image">
+            <div id="upload-div"><form id='img-upload-form' method="POST" action="/api/users/upload" enctype="multipart/form-data">
+              <input id='img-file-field' type="file" name="image" value="{{user.avatar}}">
               <input type="submit" id="img-btn"></input>
-            </form> 
+            </form> </div>
             <div class="card-body">   
               <!--Profile info fill in proper terms-->            
           <h3 class="card-subtitle mb-2 profileName">{{user.first_name}} {{user.last_name}}</h3>
@@ -50,3 +50,6 @@
     </div>
   </div>
 </div>
+
+
+<script src="../javascript/profile.js"></script>

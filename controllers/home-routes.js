@@ -36,10 +36,10 @@ router.get('/signup', (req,res) =>{
 })
 
 router.get('/profile', (req,res) =>{
-
+    console.log(req.session);
     User.findOne({
         where:{ 
-            email: req.session.email
+            email: req.session.username
         }
     }).then(userData => {
         const user = userData.get({plain:true});
