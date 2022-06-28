@@ -1,9 +1,9 @@
+const sequelize = require('../config/connection');
 const seedUsers = require('./user-seeds');
 const seedActivities = require('./activity-seeds');
 const seedUserActivity = require('./useractivity-seeds');
+const seedUnique = require('./unique-seeds');
 
-
-const sequelize = require('../config/connection');
 
 const seedAll = async () => {
   await sequelize.sync({ force: true });
@@ -16,6 +16,8 @@ const seedAll = async () => {
 
   await seedUserActivity();
   console.log('\n----- UserActivity SEEDED -----\n');
+  await seedUnique();
+  console.log('\n----- UniqueUserActivity SEEDED -----\n');
 
   process.exit(0);
 };

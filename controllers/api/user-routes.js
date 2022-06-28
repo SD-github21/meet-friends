@@ -187,7 +187,7 @@ router.post('/signup', (req,res)=>{
   })
   .then(user => {
     res.json(user);
-    console.log(user);
+   
   })
   .catch(err => {
     console.log(err);

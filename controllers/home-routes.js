@@ -51,7 +51,7 @@ router.get('/profile', authorizeUser, (req,res) =>{
                 }
     }).then(userData => {
         const user = userData.get({plain:true});
-        console.log(user);
+      
         res.render('profile', {
             user,
             loggedIn: true
@@ -77,7 +77,7 @@ router.get('/profile/:id', authorizeUser, (req,res) =>{
                 }
     }).then(userData => {
         const user = userData.get({plain:true});
-        console.log(user);
+        
         res.render('user-profile', {
             user,
             loggedIn: true

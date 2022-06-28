@@ -85,11 +85,22 @@ background: linear-gradient(90deg, rgba(236,222,10,0.48783263305322133) 35%, rgb
     z-index: 0;
 }
 
-
+.card-body h3{
+    font-size: 40px;
+}
+.card-body p{
+    font-size: 28px;
+    
+}
 
 #meet-friends-description{
     font-size: 35px;
     color: white;
     font-weight: bolder;
     background-color: rgba(0, 0, 0, 0.349);
+}
+
+#contact-me{
+    font-size: 30px;
+    font-weight: bolder;
 }
