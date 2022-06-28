@@ -1,12 +1,19 @@
 const router = require('express').Router();
-const { User, UniqueActivity , UserActivity} = require('../../models');
+const { User, UniqueActivity , UserActivity, Activity} = require('../../models');
 const upload = require('../../config/imageStorage');
 const multer = require('multer')
 
 // GET /api/users
 router.get('/', (req, res) => {
     User.findAll({
-      include:{model: UniqueActivity}
+      include:{
+        model: UniqueActivity,
+         include:{ 
+                  model: Activity,
+                  
+                 }
+              
+              }
     })
       .then(dbUserData => res.json(dbUserData))
       .catch(err => {
@@ -20,7 +27,15 @@ router.get('/:id', (req, res) => {
   User.findOne({
     where: {
       id: req.params.id
-    }
+    },
+    include:{
+      model: UniqueActivity,
+       include:{ 
+                model: Activity,
+                
+               }
+            
+            }
   })
    .then(dbUserData => {
     if (!dbUserData) {
@@ -65,7 +80,7 @@ router.post('/', (req,res) => {
     .then(userData => {
       req.session.save(() => {
         req.session.user_id = userData.id;
-        req.session.username = userData.email;
+        req.session.email = userData.email;
         req.session.loggedIn = true;
     
         res.json(userData);
@@ -180,19 +195,49 @@ router.post('/signup', (req,res)=>{
   });
 })
 
-router.post('/upload', upload.single('image'), (req,res) => {
- // once image uploaded do another fetch (PUT - update image )
-
- // SAVE IMAGE NAME TO VARIABLE  FETCH PUT REQUEST TO USER UPDATE USER ../img/${variableIMAGENAME} user avatar 
-
- // REFRESH DASHBOARD WITH NEW USER DATA
-
-  res.render('dashboard');
-  res.redirect('/dashboard');
+router.post('/upload', upload.single('image'), (req, res) => {
+  if (!req.file) {
+    console.log("No file received");
+    return res.send({
+      success: false
+    });}
 
 
+            
+ 
+    res.redirect('/profile')
+    
 
-});
+      
+  });
+ 
+   
+ router.put('/avatar/:id', (req,res) => {
+ 
+  User.update(
+    {
+      avatar: req.body.avatar
+    },
+    
+   {
+    where:{
+      id: req.session.user_id
+    }
+  })
+  .then(dbUserData => {
+    if (!dbUserData) {
+      res.status(404).json({ message: 'No user found with this id' });
+      return;
+    }
+    
+    res.json(dbUserData);
+   })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+ });
+
 
 
 module.exports = router;
