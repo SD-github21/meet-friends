@@ -3,6 +3,7 @@ const { User } = require('../../models');
 const upload = require('../../config/imageStorage');
 const multer = require('multer');
 const authorizeUser = require('../../utils/auth');
+const { response } = require('express');
 
 // GET /api/users
 router.get('/', (req, res) => {
@@ -168,29 +169,69 @@ router.post('/logout', (req, res) => {
   }
 });
 
+router.post('/upload', upload.single('image'), (req, res) => {
+  if (!req.file) {
+    console.log("No file received");
+    return res.send({
+      success: false
+    });
 
-router.post('/upload', upload.single('image'), (req,res) => {
- // once image uploaded do another fetch (PUT - update image 
-// .then (router.put('/profile))}
- // SAVE IMAGE NAME TO VARIABLE  FETCH PUT REQUEST TO USER UPDATE USER ../img/${variableIMAGENAME} user avatar 
+  } else {
+   console.log(req.file.filename)
+           const profileImg = req.file.filename
+      
+      User.update({
+        avatar: profileImg
+      },
+       {
+        where:{
+          id: req.session.user_id
+        }
+      })
+      .then(dbUserData => {
+        if (!dbUserData) {
+          res.status(404).json({ message: 'No user found with this id' });
+          return;
+        }
+        res.json(dbUserData);
+       })
+        .catch(err => {
+          console.log(err);
+          res.status(500).json(err);
+        });
+            
+          res.render('profile', {
+            profileImg,
+            loggedIn: req.session.loggedIn
+          });
+          return;
+          }
+        });
+ 
+   
+    
 
- // REFRESH DASHBOARD WITH NEW USER DATA
 
-  res.render('profile');
-  res.redirect('/profile');
+// //       const profilePic = 
+//  // SAVE IMAGE NAME TO VARIABLE  FETCH PUT REQUEST TO USER UPDATE USER ../img/${variableIMAGENAME} user avatar 
 
-//   User.findOne({
-//     where:{ 
-//         email: req.session.email
-//     }
-// }).then(userData => {
-//     const user = userData.get({plain:true});
-//     res.render('profile', {
-//         user,
-//         loggedIn: true
-//     });
-// })
-});
+//  // REFRESH DASHBOARD WITH NEW USER DATA
+
+
+
+
+// //   User.findOne({
+// //     where:{ 
+// //         email: req.session.email
+// //     }
+// // }).then(userData => {
+// //     const user = userData.get({plain:true});
+// //     res.render('profile', {
+// //         user,
+// //         loggedIn: true
+// //     });
+// // })
+// });
 // router.put('/img', (req, res) => { 
 //   User.update(req.body, {
 //     where: {
@@ -231,106 +272,6 @@ router.get('/:id', (req, res) => {
     });
 })
 
-
-
-router.get('/edit/:id', (req, res) => {
-  User.findOne({
-      where: {
-        id: req.params.id
-      },
-      
-    })
-      .then(dbProfileData => {
-        if (!dbProfileData) {
-          res.status(404).json({ message: 'No user found with this id' });
-          return;
-        }
- 
-        const profile = dbProfileData.get({ plain: true });
-  
-        res.render('edit-profile', {
-          profile,
-          loggedIn: req.session.loggedIn
-        });
-      })
-      .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-      });
-  });
-  
-  router.put('/edit/:id', (req, res) => {
-    User.update(
-      {
-        first_name: req.body.first_name,
-        last_name: req.body.last_name,
-        email: req.body.email,
-        password: req.body.password,
-        city: req.body.city, 
-        state: req.body.state, 
-        dob: req.body.dob,
-        gender: req.body.gender
-                
-      },
-      {
-        where: {
-          id: req.params.id
-        }
-      }
-    )
-      .then(dbProfileData => {
-        if (!dbProfileData) {
-          res.status(404).json({ message: 'No post found with this id' });
-          return;
-        }
-        res.json(dbProfileData);
-      })
-      .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-      });
-  });
-
-  router.get('delete/:id', authorizeUser, (req, res) => {
-    console.log('DELETEPROFILE')
-    User.findOne({
-      where: {
-        id: req.params.id
-      }
-    })
-  
-  .then(dbProfileData => {
-    if (!dbProfileData) {
-      res.status(404).json({ message: 'No post found with this id' });
-      return;
-    }
-    res.json(dbProfileData);
-  })
-  .catch(err => {
-    console.log(err);
-    res.status(500).json(err);
-  });
-});
-
-  router.delete('/delete/:id', authorizeUser, (req, res) => {
-    console.log('Hey You!')
-    User.destroy({
-      where: {
-        id: req.params.id
-      }
-    })
-      .then(dbProfileData => {
-        if (!dbProfileData) {
-          res.status(404).json({ message: 'No post found with this id' });
-          return;
-        }
-        res.json(dbProfileData);
-      })
-      .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-      });
-  });
 
 
 module.exports = router;

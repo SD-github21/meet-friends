@@ -19,6 +19,7 @@ async function editProfileHandler(event){
         state, 
         dob,
         gender,
+        email
         
         
       }),
@@ -34,13 +35,13 @@ async function editProfileHandler(event){
     }
   }
 
-  async function deleteProfileHandler(event) {
+  function deleteProfileHandler(event) {
     event.preventDefault();
   
     const user_id = window.location.toString().split('/')[
       window.location.toString().split('/').length - 1
     ];
-    const response = await fetch(`/api/users/delete/${user_id}`, {
+    const response = fetch(`/api/users/delete/${user_id}`, {
       method: 'DELETE'
     });
   
@@ -50,7 +51,30 @@ async function editProfileHandler(event){
     } else {
       alert(response.statusText);
     }
+  };
+
+  async function profileImgUpload(event){
+    event.preventDefault();
   }
-  
+  const user_id = window.location.toString().split('/')[
+    window.location.toString().split('/').length - 1
+  ];
+
+  const uploadImg = new FormData();
+
+  // /img/${variableIMAGENAME} user avatar 
+  const response = fetch(`/api/users/upload/${user_id}`, {
+    method: 'PUT',
+    body: JSON.stringify({
+      avatar: 'profile-image'
+    
+   })
+
+  });
+  if (response.ok){
+    console.log('Hey Good Looking')
+  }
+
 document.querySelector('.save-profile-btn').addEventListener('click', editProfileHandler)
 document.querySelector('.delete-profile-btn').addEventListener('click', deleteProfileHandler)
+document.querySelector('#img-btn').addEventListener('submit', profileImgUpload)

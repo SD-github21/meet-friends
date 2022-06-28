@@ -52,4 +52,107 @@ router.get('/profile', (req,res) =>{
 
 });
 
+
+
+router.get('/edit/:id', (req, res) => {
+    User.findOne({
+        where: {
+          id: req.params.id
+        },
+        
+      })
+        .then(dbProfileData => {
+          if (!dbProfileData) {
+            res.status(404).json({ message: 'No user found with this id' });
+            return;
+          }
+   
+          const profile = dbProfileData.get({ plain: true });
+    
+          res.render('edit-profile', {
+            profile,
+            loggedIn: req.session.loggedIn
+          });
+        })
+        .catch(err => {
+          console.log(err);
+          res.status(500).json(err);
+        });
+    });
+    
+    router.put('/edit/:id', (req, res) => {
+      User.update(
+        {
+          first_name: req.body.first_name,
+          last_name: req.body.last_name,
+          email: req.body.email,
+          password: req.body.password,
+          city: req.body.city, 
+          state: req.body.state, 
+          dob: req.body.dob,
+          gender: req.body.gender
+                  
+        },
+        {
+          where: {
+            id: req.params.id
+          }
+        }
+      )
+        .then(dbProfileData => {
+          if (!dbProfileData) {
+            res.status(404).json({ message: 'No post found with this id' });
+            return;
+          }
+          res.json(dbProfileData);
+        })
+        .catch(err => {
+          console.log(err);
+          res.status(500).json(err);
+        });
+    });
+  
+//     router.get('delete/:id', authorizeUser, (req, res) => {
+//       console.log('DELETEPROFILE')
+//       User.findOne({
+//         where: {
+//           id: req.params.id
+//         }
+//       })
+    
+//     .then(dbProfileData => {
+//       if (!dbProfileData) {
+//         res.status(404).json({ message: 'No post found with this id' });
+//         return;
+//       }
+//       res.json(dbProfileData);
+//     })
+//     .catch(err => {
+//       console.log(err);
+//       res.status(500).json(err);
+//     });
+//   });
+  
+//     router.delete('/delete/:id', authorizeUser, (req, res) => {
+//       console.log('Hey You!')
+//       User.destroy({
+//         where: {
+//           id: req.params.id
+//         }
+//       })
+//         .then(dbProfileData => {
+//           if (!dbProfileData) {
+//             res.status(404).json({ message: 'No post found with this id' });
+//             return;
+//           }
+//           res.json(dbProfileData);
+//         })
+//         .catch(err => {
+//           console.log(err);
+//           res.status(500).json(err);
+//         });
+//     });
+
+
+
 module.exports = router;
