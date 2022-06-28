@@ -29,27 +29,10 @@ background: linear-gradient(90deg, rgba(236,222,10,0.48783263305322133) 35%, rgb
     font-weight: bolder;
 }
 
-.profileName {
-    font-size: 35px;
-    color: var(--MFshadow);
-    text-shadow: 5px 0px 5px darkslategray;
-}
 
-.profileDet {
-    color: var(--MFshadow);
-    text-shadow: 5px 0px 5px var(--MFshadow);
-    font-size: 25px;
-}
 
-.postText {
-    color: var(--MFshadow);
-    font-size: 15px
-}
 
-.profilePost {
-    display: flex;
 
-}
 
 /* -------------------------------------------------------------------------------------------- */
 #signup-form{
@@ -79,3 +62,37 @@ background: linear-gradient(90deg, rgba(236,222,10,0.48783263305322133) 35%, rgb
     margin: 1%;
     transform: scale(108%);
 }
+.card-container{
+    width: 10px;
+}
+.card-div{
+    padding: 0px;
+    height: 500px;
+    border: 1px solid black;
+
+    z-index: 0;
+  
+}
+
+.card-cover{
+    position: absolute;
+    width: 439.8px;
+    height: 500px;
+    z-index: 50;
+}
+
+.card{
+    z-index: 0;
+}
+
+/* .card-div:hover{
+    transform: scale(110%);
+    position: fixed;
+    left: 5%;
+    top: 5%;
+    z-index: 99;
+    width:50%;
+    background-color: black;
+    
+
+} */

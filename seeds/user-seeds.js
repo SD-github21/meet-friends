@@ -9,7 +9,7 @@ const userData = [
     last_name: "Doe",
     city: "Austin",
     state: "Texas",
-    dob: "02/12/15",
+    age: "33",
     gender: "female",
     avatar: "girl3.jpeg"
   },
@@ -20,7 +20,7 @@ const userData = [
     last_name: "Doe",
     city: "Austin",
     state: "Texas",
-    dob: "02/12/15",
+    age: "33",
     gender: "female",
     avatar: "girl4.jpeg"
   },
@@ -31,7 +31,7 @@ const userData = [
     last_name: "Doe",
     city: "Austin",
     state: "Texas",
-    dob: "02/12/15",
+    age: "33",
     gender: "male",
     avatar: "guy1.jpeg"
   },
@@ -42,7 +42,7 @@ const userData = [
     last_name: "Doe",
     city: "Austin",
     state: "Texas",
-    dob: "02/12/15",
+    age: "44",
     gender: "male",
     avatar: "guy3.webp"
   },

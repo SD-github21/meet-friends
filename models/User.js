@@ -73,8 +73,8 @@ User.init(
       allowNull: false,
     },
     // define a user's date of birth
-    dob: {
-      type: DataTypes.DATE,
+    age: {
+      type: DataTypes.INTEGER,
       allowNull: false,
     },
     // define a user's gender

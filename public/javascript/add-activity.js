@@ -69,12 +69,7 @@ async function addActivity(event) {
 
   
       
-      // const response1 = await fetch(`/api/users/user-activity`,{
-      //   method:'POST',
-      //   body: JSON.stringify({
-      //     activity.activityCategory
-      //   })
-      // })
+  
     
   
   

@@ -61,7 +61,7 @@ router.post('/', (req,res) => {
       "last_name": "Doe",
       "city": "Austin",
       "state": "Texas",
-      "dob": "02/12/15",
+      "age": "02/12/15",
       "gender": "male"
     }
   */
@@ -72,7 +72,7 @@ router.post('/', (req,res) => {
       last_name: req.body.last_name,
       city: req.body.city,
       state: req.body.state,
-      dob: req.body.dob,
+      age: req.body.dob,
       gender: req.body.gender,
       avatar: 'profile-image'
       

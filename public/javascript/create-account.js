@@ -74,8 +74,8 @@ async function signupFormHandler(event) {
                                 <input type="text" class="form-control" id="state" placeholder="Texas">
                             </div>
                             <div class="form-group">
-                                <label for="dob">DOB</label>
-                                <input type="date" class="form-control" id="dob" placeholder="dob">
+                                <label for="dob">Age</label>
+                                <input type="text" class="form-control" id="dob" placeholder="dob">
                             </div>
                             <div class="form-group">
                                 <label for="gender">Gender</label><br>
@@ -123,7 +123,7 @@ async function createProfileHandler(event){
                 last_name: lastName,
                 city,
                 state,
-                dob:dOB,
+                age:dOB,
                 email,
                 password,
                 gender
