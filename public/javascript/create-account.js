@@ -44,7 +44,7 @@ async function signupFormHandler(event) {
        
         return response.json()
     }).then(userData => {
-        console.log('hello' + userData);
+        
         if(!userData){
             // assigns user info to an object
                 user = {
@@ -112,7 +112,7 @@ async function createProfileHandler(event){
     const dOB = document.querySelector('#dob').value.trim();
     const email = user.email;
     const password = user.password;
-    console.log('hello create profile');
+    
     
 // if all the field are no empty does a post request
     if(firstName && lastName && city && state && dOB){

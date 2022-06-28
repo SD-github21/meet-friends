@@ -34,7 +34,7 @@ router.get("/", (req, res) => {
 router.get("/:id", (req, res) => {
   
  if(isNaN(parseInt(req.params.id)) === false){
-  console.log('true');
+  
 
   Activity.findOne({
     attributes: { exclude: ["password"] },

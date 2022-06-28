@@ -22,30 +22,51 @@ async function addActivity(event) {
   
   
     if(activity.category && activity.location && activity.address && activity.address && activity.city &&activity.state){
+
       
        fetch(`api/activities/${activity.category}`,{
           method:'GET',
           })
             .then(actData => actData.json() )
             .then(parsedActData => {
-                console.log(parsedActData);
+               
+                activity.category = parsedActData.id
                     fetch(`api/users/user-activity`,{
                             method:"POST",
                             body:JSON.stringify({
                                                     category: parsedActData.id,  
                                                 }),
                              headers:{ 'Content-Type': 'application/json' }
-                        }).catch(err => console.log(err))
+                        })
+                        .then(data => {
+                            fetch(`/api/unique`, {
+                                method: 'POST',
+                                body: JSON.stringify({
+                                    location_name: activity.location,
+                                    address: activity.address,
+                                    activity_id: 1,
+                                    city: activity.city,
+                                    state: activity.state
+                                }),
+                                  headers: {
+                                    'Content-Type': 'application/json'
+                                  }
+                            }).catch(err => console.log(err));
+                            
+                               
+                        })
+                        .catch(err => console.log(err))
                     })
                     .catch(err => console.log(err));
       
-      if(typeof activity.category === 'number'){
+         
+         
         
-      }
     }
   
   
   }
+
   
       
       // const response1 = await fetch(`/api/users/user-activity`,{
