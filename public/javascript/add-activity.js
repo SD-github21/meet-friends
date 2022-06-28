@@ -1,9 +1,6 @@
 /** @format */
 
 
-
-//req.session.user_id
-
 async function addActivity(event) {
     event.preventDefault();
     
