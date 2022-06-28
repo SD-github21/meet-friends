@@ -2,7 +2,7 @@
 
 
 async function addActivity(event) {
-    event.preventDefault();
+   event.preventDefault();
     
   
     const activityCategory = document.querySelector("#activityCategory").value;
@@ -44,7 +44,7 @@ async function addActivity(event) {
                                 body: JSON.stringify({
                                     location_name: activity.location,
                                     address: activity.address,
-                                    activity_id: 1,
+                                    activity_id: activity.category,
                                     city: activity.city,
                                     state: activity.state
                                 }),

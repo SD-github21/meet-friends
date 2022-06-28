@@ -23,28 +23,26 @@
       </div>
       
     </div>
-    <div class="col-lg-6">
-      <div class="">
+
         <div class="col-lg-6 bg-light bg-opacity-25 rounded shadow">
          <h2 class="profilePostText px-4 py-4">Active Posts</h2>
-         <ol class="post-list postText">
-          {{#each posts as |post|}}
-          <li>
-            {{> post-info post}}
-          </li>
-          {{/each}}
-        </ol>
+          {{#if user.uniqueactivities }}
+            
+              {{#each user.uniqueactivities}}
+                      <div class="card bg-light bg-opacity-25 rounded shadow" style="width: 20rem;">
+                         <div class="card-body">   
+                          <h3 class="card-subtitle mb-2 profileName">Activity: {{activity.activity_name}}</h3>
+                          <p class="card-text profileDet">Location: {{location_name}}</p>
+                          <p ="card-text profileDet">Address {{address}}</p>
+                         
+                        </div>
+                      </div>
+               {{/each}}
+         
+          {{/if}}
+       
         </div>
-        <div class="col-lg-6 bg-light bg-opacity-25 rounded shadow">
-         <h2 class="profilePostText px-4 py-4">Success!!</h2>
-         <ol class="post-list postText">
-          {{#each posts as |post|}}
-          <li>
-            {{> post-info post}}
-          </li>
-          {{/each}}
-        </ol>
-        </div>
+    
         </div>
       </div>
     </div>

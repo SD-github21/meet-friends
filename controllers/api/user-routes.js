@@ -1,12 +1,19 @@
 const router = require('express').Router();
-const { User, UniqueActivity , UserActivity} = require('../../models');
+const { User, UniqueActivity , UserActivity, Activity} = require('../../models');
 const upload = require('../../config/imageStorage');
 const multer = require('multer')
 
 // GET /api/users
 router.get('/', (req, res) => {
     User.findAll({
-      include:{model: UniqueActivity}
+      include:{
+        model: UniqueActivity,
+         include:{ 
+                  model: Activity,
+                  
+                 }
+              
+              }
     })
       .then(dbUserData => res.json(dbUserData))
       .catch(err => {
@@ -20,7 +27,15 @@ router.get('/:id', (req, res) => {
   User.findOne({
     where: {
       id: req.params.id
-    }
+    },
+    include:{
+      model: UniqueActivity,
+       include:{ 
+                model: Activity,
+                
+               }
+            
+            }
   })
    .then(dbUserData => {
     if (!dbUserData) {
