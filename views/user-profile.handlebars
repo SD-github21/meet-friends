@@ -1,6 +1,6 @@
 
 <div class="container-fluid row profileView m-1">
-    <div class=" col-12 col-md-2  mr-1">
+    <div class=" col-12 col-md-2  ">
 
       <div class="card bg-light bg-opacity-25 rounded shadow">
             <img class="card-img-top" src="../img/{{user.avatar}}" alt="Profile Image">
@@ -19,16 +19,17 @@
       
     </div>
 
-    <div class=" col-12 col-md-9 bg-light bg-opacity-25 rounded shadow border border-dark">
-         <h2 class="profilePostText px-4 py-4">Active Posts</h2>
+    <div class=" col-12 col-md-9 bg-light bg-opacity-25 rounded shadow border border-dark p-5">
+         <h2 class="profilePostText ">Active Posts</h2>
           {{#if user.uniqueactivities }}
-            <div class="container-fluid row d-flex flex-wrap">
+            <div class="container-fluid row d-flex flex-wrap p-5" id="activity-card-container">
               {{#each user.uniqueactivities}}
-                      <div class="card bg-light bg-opacity-25 rounded shadow col-12 col-md-4" style="width: 20rem;">
-                         <div class="card-body">   
-                          <h3 class="card-subtitle mb-2 profileName">Activity: {{activity.activity_name}}</h3>
+                      <div class=" activity-card card bg-light bg-opacity-25 rounded shadow col-12 col-md-5 p-2 mr-4 mb-4">
+                         <div class="card-body" data-uniqueId="{{id}}" data-activityId='{{activity.id}}' data-userId ='{{user_id}}'>    
+                          <h3 class="card-subtitle profileName pb-3">Activity: {{activity.activity_name}}</h3>
                           <p class="card-text profileDet">Location: {{location_name}}</p>
                           <p ="card-text profileDet">Address {{address}}</p>
+                          <button class="btn btn-danger" id="deleteBtn">Delete Post</button>
                          
                         </div>
                       </div>

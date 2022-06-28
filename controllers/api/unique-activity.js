@@ -41,5 +41,25 @@ router.post('/', (req, res) => {
 
 });
 
+router.delete('/:id', (req,res) =>{
+
+    UniqueActivity.destroy({
+        where: {
+          id: req.params.id
+        }
+      })
+       .then(dbUserData => {
+        if (!dbUserData) {
+          res.status(404).json({ message: 'No Unique Activity found by this id' });
+          return;
+        }
+        res.json(dbUserData);
+       })
+        .catch(err => {
+          console.log(err);
+          res.status(500).json(err);
+        });
+});
+
 
 module.exports = router;

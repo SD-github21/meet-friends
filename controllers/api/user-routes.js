@@ -94,10 +94,45 @@ router.post('/', (req,res) => {
 
 });
 
+
+// /req.session.user_id
+
 router.post('/user-activity', (req,res) =>{
   UserActivity.create({
-    user_id: req.session.user_id,
+    user_id: req.body.user_id,
     activity_id: req.body.category
+  }) 
+  
+  .then(userData => res.json(userData))
+  .catch(err => {
+    console.log(err);
+    res.status(500).json(err);
+  });
+
+})
+router.post('/find', (req,res) =>{
+  UserActivity.findOne({
+    where:{
+      activity_id: req.body.activity_id,
+      user_id: req.body.user_id
+     
+    }
+  })   .then(dbUserData => {
+    if (!dbUserData) {
+      res.status(404).json({ message: 'No user found with this id' });
+      return;
+    }
+    res.json(dbUserData);
+   })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+
+})
+router.delete('/user-activity/:id', (req,res) =>{
+  UserActivity.destroy({
+      where:{id:req.params.id}
   }) 
   
   .then(userData => res.json(userData))
