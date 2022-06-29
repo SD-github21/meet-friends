@@ -1,7 +1,9 @@
-
+// inits router 
 const router = require('express').Router();
+// inits all models 
 const { User, Activity, UserActivity, UniqueActivity } = require('../../models');
 
+// get all routes for unique activities
 router.get('/', (req, res) => {
     UniqueActivity.findAll({
         include: [
@@ -22,7 +24,7 @@ router.get('/', (req, res) => {
      });
 
 });
-
+// get all routes for post items
 router.post('/', (req, res) => {
     UniqueActivity.create({
         location_name: req.body.location_name,
@@ -40,7 +42,7 @@ router.post('/', (req, res) => {
      });
 
 });
-
+// delete routes for unique 
 router.delete('/:id', (req,res) =>{
 
     UniqueActivity.destroy({

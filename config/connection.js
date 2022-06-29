@@ -1,10 +1,13 @@
 // Import the Sequelize constructor from the library
 const Sequelize = require("sequelize");
 
+// Require dot .env to protect files 
 require('dotenv').config();
 
+// set a variable to sequelize
 let sequelize;
 
+// setup database config
 if (process.env.JAWSDB_URL) {
     sequelize = new Sequelize(process.env.JAWSDB_URL)
 } else {
