@@ -53,6 +53,7 @@ async function addActivity(event) {
                                   }
                             }).catch(err => console.log(err));
                             
+                            location.reload();
                                
                         })
                         .catch(err => console.log(err))
