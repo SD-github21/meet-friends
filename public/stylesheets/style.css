@@ -47,10 +47,14 @@ background: linear-gradient(90deg, rgba(236,222,10,0.48783263305322133) 35%, rgb
     
     border-radius: 5%;
     padding: 1%;
-    font-size: 40px;
+    font-size: bold 40px;
     text-align: center;
     width: 100%;
     margin: 1%;
+    border-radius: 2%;
+    border: 2px solid yellow;
+    box-shadow: 10px 10px 10px rgb(10, 228, 10) ;
+    
 }
 
 .activities-btn:hover{
@@ -94,7 +98,7 @@ background: linear-gradient(90deg, rgba(236,222,10,0.48783263305322133) 35%, rgb
 }
 
 #meet-friends-description{
-    font-size: 35px;
+    font-size: 25px;
     color: white;
     font-weight: bolder;
     background-color: rgba(0, 0, 0, 0.349);
@@ -106,8 +110,18 @@ background: linear-gradient(90deg, rgba(236,222,10,0.48783263305322133) 35%, rgb
 }
 
 footer{
-    color: var(--MFBlue);
-    font-size: 20px;
-    
+     
+    bottom: 0;
+    font-size: 15px;
+    color: white;
+    text-shadow: 1px 1px 5px var(--MFshadow);
+    font-weight: bolder;
+    padding: 10px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    }
 
-}
+    footer img {
+        margin: 5px
+    }
