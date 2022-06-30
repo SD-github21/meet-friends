@@ -8,7 +8,7 @@ const { Activity, User, UniqueActivity} = require('../models');
 const authorizeUser = require('../utils/auth');
 const {storage , upload }  = require('../config/imageStorage');
 
-
+// |  --------- all the routes for the html page ---------- |
 router.get('/',(req,res) =>{
     res.render('homepage');
 });

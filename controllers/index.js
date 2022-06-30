@@ -12,7 +12,7 @@ const homeRoutes = require('./home-routes');
 
 //router.use('/dashboard', dashboardRoutes);
 router.use('/api', apiRoutes);
-
+// home routes usage 
 router.use('/', homeRoutes);
 
 
