@@ -34,7 +34,7 @@
     {{/if}}
   </nav>
 </header> 
-<body class="d-flex flex-column min-vh-100" style ="background: radial-gradient(circle, rgba(17,215,213,1) 0%, rgba(255,242,114,1) 100%, rgba(14,226,220,1) 100%);" >
+<body class="d-flex flex-column min-vh-100 mb-5" style ="background: radial-gradient(circle, rgba(17,215,213,1) 0%, rgba(255,242,114,1) 100%, rgba(14,226,220,1) 100%);" >
     <main>{{{body}}}</main>
 
 
@@ -45,6 +45,6 @@
 {{#if loggedIn}}
 <script src="../javascript/logout.js"></script>
 {{/if}}
-{{> footer}}
-</body>
 
+</body>
+{{> footer}}

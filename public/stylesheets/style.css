@@ -113,6 +113,10 @@ body{
     font-weight: bolder;
 }
 
+.activePost {
+    margin-bottom: 25px;
+}
+
 footer{
     position: fixed; left:0px;
     bottom:0px;
