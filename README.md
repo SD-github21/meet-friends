@@ -38,12 +38,12 @@ SO THAT I can feel less isolated<br>
 - Have a quality README 
 
 ### **Contributing**
-The following individuals contributed to this project (listed in alphabetical order by last name):
-Sapana Donde - Back End
-Daniel Escobedo - Front End
-Scott Heier - Front End and Back End
-Hector Mendez - Front End
-Andrea West - Front End and Back End
+The following individuals contributed to this project (listed in alphabetical order by last name):<br>
+Sapana Donde - Back End<br>
+Daniel Escobedo - Front End<br>
+Scott Heier - Front End and Back End<br>
+Hector Mendez - Front End<br>
+Andrea West - Front End and Back End<br>
 
 ### **Built With**
 * Bcrypt
@@ -57,7 +57,7 @@ Andrea West - Front End and Back End
 * Sequelize
 
 ### **Sample Screen Shots**
-(1) The following screen shot depicts the home page, which contains an animated rotating background of photos (two pictures are featured below):
+(1) The following screen shots depict the home page, which contains an animated rotating background of photos (two pictures are featured below):
 ![alt text](public/img/homepage-pic1.png)
 ![alt text](public/img/homepage-pic2.png)
 
