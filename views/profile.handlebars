@@ -2,19 +2,19 @@
 <div class="container-fluid row profileView m-1">
     <div class=" col-12 col-lg-2  mr-1">
 
-      <div class="card bg-light bg-opacity-25 rounded shadow">
+      <div class="card bg-light bg-opacity-25 rounded shadow m-2">
             <img class="card-img-top" src="../img/{{user.avatar}}" alt="Profile Image">
             <div id="upload-div"><form id='img-upload-form' method="POST" action="/api/users/upload" enctype="multipart/form-data">
               <input id='img-file-field' type="file" name="image" value="{{user.avatar}}">
               <input type="submit" id="img-btn"></input>
             </form> </div>
             <div class="card-body">   
-              <!--Profile info fill in proper terms-->            
+          <!--card to fill in user info -->           
           <h3 class="card-subtitle mb-2 profileName">{{user.first_name}} {{user.last_name}}</h3>
           <p class="card-text profileDet">{{user.gender}}</p>
           <p class="card-text profileDet">Location: {{user.city}}, {{user.state}}</p>
           <p ="card-text profileDet">Age: {{user.age}}</p>
-          {{!-- <a href="api/users/edit/{{user.id}}" class="cart-text editLink">Edit Profile</a> --}}
+        <!--  <a href="api/users/edit/{{user.id}}" class="cart-text editLink">Edit Profile</a> -->
           
         </div>
       </div>
@@ -23,7 +23,7 @@
       
     </div>
 
-    <div class=" col-12 col-lg-9 bg-light bg-opacity-25 rounded shadow border border-dark p-5">
+    <div class=" col-12 col-lg-9 bg-light bg-opacity-25 rounded shadow border border-dark p-5 activePost">
          <h2 class="profilePostText ">Active Posts</h2>
           {{#if user.uniqueactivities }}
             <div class="container-fluid row d-flex flex-wrap p-5" id="activity-card-container">
