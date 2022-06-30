@@ -1,9 +1,12 @@
+// setups up router
 const router = require('express').Router();
+// setups models
 const { User, UniqueActivity , UserActivity, Activity} = require('../../models');
+// setups upload
 const upload = require('../../config/imageStorage');
-const multer = require('multer')
 
-// GET /api/users
+
+// Get all routes
 router.get('/', (req, res) => {
     User.findAll({
       include:{
@@ -22,7 +25,7 @@ router.get('/', (req, res) => {
       });
 });
 
-// GET /api/users/1
+// get a single user routes
 router.get('/:id', (req, res) => {
   User.findOne({
     where: {
@@ -50,7 +53,7 @@ router.get('/:id', (req, res) => {
     });
 })
 
-
+// post routes for user
 router.post('/', (req,res) => {
   /*
     expects 
@@ -93,9 +96,7 @@ router.post('/', (req,res) => {
       });
 
 });
-
-
-
+// post routes for user activity
 router.post('/user-activity', (req,res) =>{
   UserActivity.create({
     user_id: req.session.user_id,
@@ -109,6 +110,7 @@ router.post('/user-activity', (req,res) =>{
   });
 
 })
+// setups routes for finding a activity
 router.post('/find', (req,res) =>{
   UserActivity.findOne({
     where:{
@@ -129,6 +131,7 @@ router.post('/find', (req,res) =>{
     });
 
 })
+// delete route for user activity
 router.delete('/user-activity/:id', (req,res) =>{
   UserActivity.destroy({
       where:{id:req.params.id}
@@ -141,6 +144,7 @@ router.delete('/user-activity/:id', (req,res) =>{
   });
 
 })
+// post post route to check login 
 router.post('/login', (req, res) => {
   User.findOne({
     where: {
@@ -171,8 +175,7 @@ router.post('/login', (req, res) => {
     });
   });
 });
-
-// PUT /api/users/1
+// update route for id 
 router.put('/:id', (req, res) => {
   User.update(req.body, {
     where: {
@@ -192,7 +195,7 @@ router.put('/:id', (req, res) => {
     });
 });
 
-// DELETE /api/users/1
+// delete route for user
 router.delete('/:id', (req, res) =>{
   User.destroy({
     where: {
@@ -211,7 +214,7 @@ router.delete('/:id', (req, res) =>{
       res.status(500).json(err);
     });
 });
-
+// post route for signup
 router.post('/signup', (req,res)=>{
   User.findOne({
     attributes:{exclude:['password']},
@@ -228,7 +231,7 @@ router.post('/signup', (req,res)=>{
     res.status(500).json(err);
   });
 })
-
+// upload post route for image
 router.post('/upload', upload.single('image'), (req, res) => {
   if (!req.file) {
     console.log("No file received");
@@ -244,8 +247,7 @@ router.post('/upload', upload.single('image'), (req, res) => {
 
       
   });
- 
-   
+// update avatar in user  
  router.put('/avatar/:id', (req,res) => {
  
   User.update(
@@ -271,7 +273,7 @@ router.post('/upload', upload.single('image'), (req, res) => {
       res.status(500).json(err);
     });
  });
-
+ // logout post route 
  router.post('/logout',(req,res) =>{
   if (req.session.loggedIn) {
     req.session.destroy(() => {

@@ -1,7 +1,9 @@
+// init multer for photo upload
 const multer = require('multer');
+// setups up path for for file structure
 const path = require('path');
 
-
+// setups up pathing for multer
     const storage = multer.diskStorage({
 
         destination: (req, file,cb ) => {
@@ -13,7 +15,7 @@ const path = require('path');
           cb(null, file.originalname)
         }
 
-        //+ path.extname(file.originalname)
+       
       });
       
    const upload = multer({storage: storage})

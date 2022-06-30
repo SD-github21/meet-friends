@@ -1,9 +1,10 @@
 /** @format */
-
+//setups up router to push everything through index.js
 const router = require("express").Router();
+// allows access to all the models
 const { User, Activity, UserActivity, UniqueActivity } = require("../../models");
 
-// get all users
+// route to get all activities
 router.get("/", (req, res) => {
   Activity.findAll({
     attributes: ["id", "activity_name"],
@@ -30,7 +31,7 @@ router.get("/", (req, res) => {
 
 
 
-// get one user
+//route to get one activity
 router.get("/:id", (req, res) => {
   
  if(isNaN(parseInt(req.params.id)) === false){
@@ -118,6 +119,7 @@ router.put("/:id", (req, res) => {
     });
 });
 
+// delete route for activity
 router.delete("/:id", (req, res) => {
   Activity.destroy({
     where: {
