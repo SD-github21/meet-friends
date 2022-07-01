@@ -1,9 +1,10 @@
+// handler for login 
 async function loginFormHandler(event) {
     event.preventDefault();
-  
+    // once listener is triggered grab email and password from sign in form
     const email = document.querySelector('#email-login').value.trim();
     const password = document.querySelector('#password-login').value.trim();
-  
+  // if an email and password is found do a fetch to check if it is correct
     if (email && password) {
       const response = await fetch('/api/users/login', {
         method: 'post',
@@ -21,7 +22,7 @@ async function loginFormHandler(event) {
       }
     }
   }
-  
+  // listener for login 
   document.querySelector('.login-form').addEventListener('submit', loginFormHandler);
   
  

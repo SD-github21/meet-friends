@@ -12,7 +12,7 @@ const {storage , upload }  = require('../config/imageStorage');
 router.get('/',(req,res) =>{
     res.render('homepage');
 });
-
+// sends user to dashboard
 router.get('/dashboard', authorizeUser, (req,res) =>{
     Activity.findAll()
     .then(activityData => {
@@ -29,12 +29,11 @@ router.get('/dashboard', authorizeUser, (req,res) =>{
     
     
 });
-
-
+// sends user to signup page
 router.get('/signup', (req,res) =>{
     res.render('signup')
 })
-
+// sends user to profile page
 router.get('/profile', authorizeUser, (req,res) =>{
 
     User.findOne({
@@ -60,7 +59,7 @@ router.get('/profile', authorizeUser, (req,res) =>{
     
 
 });
-
+// sends user to private profile pages
 router.get('/profile/:id', authorizeUser, (req,res) =>{
 
     User.findOne({

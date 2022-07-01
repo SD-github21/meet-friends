@@ -2,8 +2,8 @@
 
 
 
-//col-12 col-md-2
 
+// code that creates the dashboard data section when buttons are selected 
 const dashboardSectionData = (activityData) => {
   const people = activityData.users.map((user) => {
     return ` 
@@ -31,7 +31,7 @@ const dashboardSectionData = (activityData) => {
 
   return people;
 };
-
+// click handler for button clicks
 const clickHandler = (event) => {
   const activityId = event.target.attributes[2].value;
   const isBtn = "activityBtn";
@@ -57,7 +57,7 @@ const clickHandler = (event) => {
 
   }
 };
-
+// listener for click of a dashboard button
 document
   .querySelector("#activities-div")
   .addEventListener("click", clickHandler);

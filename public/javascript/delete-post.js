@@ -1,5 +1,7 @@
+
+// handler for deleting posts - 
 function deletePostHandler(event){
-  
+  // if the target is a delete button grab the data attribute info and assign it
     if(event.target.id === 'deleteBtn'){
         // event.preventDefault();
         const uniqueId = event.target.parentElement.attributes[1].value;
@@ -9,7 +11,7 @@ function deletePostHandler(event){
         // console.log('This is the UniqueEventId ' + uniqueId );
         // console.log('This is the user_id ' + userId);
         // console.log('This is the activity_id ' + activityId);
-
+// does a fetch find the user activity through table
         fetch('/api/users/find', {
             method: 'POST',
             body: JSON.stringify({
@@ -22,6 +24,7 @@ function deletePostHandler(event){
           })
           .then(response => response.json())
           .then(data => {
+            // once its found deletes it
                 fetch(`/api/users/user-activity/${data.id}`,{
                     method: 'DELETE'
                 })
@@ -29,7 +32,7 @@ function deletePostHandler(event){
             
           })
           .catch(err => console.log(err));
-
+        // delete the unique activity from database
         fetch(`/api/unique/${uniqueId}`,{
             method:'DELETE'
         }).then(response => response.json()).then(responseData => location.reload()).catch(err => console.log(err));

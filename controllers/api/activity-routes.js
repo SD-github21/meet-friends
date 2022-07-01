@@ -28,9 +28,6 @@ router.get("/", (req, res) => {
       res.status(500).json(err);
     });
 });
-
-
-
 //route to get one activity
 router.get("/:id", (req, res) => {
   
@@ -80,7 +77,6 @@ router.get("/:id", (req, res) => {
 
   }
 });
-
 // create a activity
 router.post("/", (req, res) => {
   Activity.create({
@@ -93,7 +89,6 @@ router.post("/", (req, res) => {
       res.status(500).json(err);
     });
 });
-
 // update an activity's name
 router.put("/:id", (req, res) => {
   Activity.update(
@@ -118,7 +113,6 @@ router.put("/:id", (req, res) => {
       res.status(500).json(err);
     });
 });
-
 // delete route for activity
 router.delete("/:id", (req, res) => {
   Activity.destroy({
